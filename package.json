@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --open --config ./webpack.config.js",
-    "build": "webpack --config ./webpack.config.js"
+    "dev": "webpack serve --open",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
