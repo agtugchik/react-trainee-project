@@ -59,7 +59,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name][contenthash].css',
     }),
-    new ESLintPlugin({ extensions: ['ts', 'tsx'], fix: true }),
+    new ESLintPlugin({ extensions: ['ts', 'tsx'], fix: true, configType: 'flat' }),
   ],
   devServer: {
     port: 3000,
