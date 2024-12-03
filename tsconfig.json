@@ -15,7 +15,9 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "paths": {
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@constants/*": ["./src/constants/*"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts", "eslint.config.mjs"]
