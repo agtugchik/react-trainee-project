@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 type Props = {
-  children: ReactNode | ReactNode[] | string;
+  children: ReactNode;
 };
 
 export const Page = ({ children }: Props) => {

@@ -1,1 +1,3 @@
-export { ImagesPage } from './images-page';
+import { ImagesPage } from './images-page';
+
+export default ImagesPage;
