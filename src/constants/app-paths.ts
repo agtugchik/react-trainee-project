@@ -1,4 +1,4 @@
-enum AppPaths {
+const enum AppPaths {
   ROOT = '/',
   MAIN = '/main',
   AUTH = '/auth',
