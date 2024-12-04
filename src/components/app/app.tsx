@@ -1,11 +1,9 @@
 import React from 'react';
-import { AppRouter } from 'components/app-router';
-import { BrowserRouter } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
+import routes from 'constants/routes';
 
 export const App = () => {
-  return (
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
-  );
+  const appRoutes = useRoutes(routes);
+
+  return <div>{appRoutes}</div>;
 };
