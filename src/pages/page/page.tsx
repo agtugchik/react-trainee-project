@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-type Props = {
-  children: ReactNode;
-};
-
-export const Page = ({ children }: Props) => {
-  return <div>{children}</div>;
+export const Page = () => {
+  return (
+    <Suspense fallback="loading...">
+      <Outlet />
+    </Suspense>
+  );
 };
