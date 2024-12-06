@@ -1,10 +1,5 @@
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-// import { AuthPage } from 'pages/auth-page';
-// import { MainPage } from 'pages/main-page';
-// import { ImagePage } from 'pages/image-page';
-// import { ImagesPage } from 'pages/images-page';
-// import { ProfilePage } from 'pages/profile';
 import AppPaths from 'constants/app-paths';
 
 const LazyMainPage = lazy(() => import('pages/main-page'));
