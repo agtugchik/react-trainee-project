@@ -10,6 +10,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -48,6 +49,8 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
     alias: {
       components: path.resolve(__dirname, 'src/components'),
+      pages: path.resolve(__dirname, 'src/pages'),
+      constants: path.resolve(__dirname, 'src/constants'),
     },
   },
   plugins: [
@@ -64,5 +67,6 @@ module.exports = {
   devServer: {
     port: 3000,
     hot: true,
+    historyApiFallback: true,
   },
 };

@@ -1,5 +1,16 @@
 import React from 'react';
+import { useRoutes } from 'react-router-dom';
+import routes from 'constants/routes';
+import { Page } from 'pages/page';
 
 export const App = () => {
-  return <h1 className="text-3xl font-bold underline">react-trainee-project</h1>;
+  const appRoutes = useRoutes(routes);
+
+  return (
+    <>
+      {/* {'react-trainee-project'} */}
+      {appRoutes}
+      <Page />
+    </>
+  );
 };
