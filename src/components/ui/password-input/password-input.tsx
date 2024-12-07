@@ -2,9 +2,10 @@ import React from 'react';
 
 type Props = {
   isConfirm?: boolean;
+  isForgot?: boolean;
 };
 
-export const PasswordInput = ({ isConfirm }: Props) => (
+export const PasswordInput = ({ isConfirm, isForgot }: Props) => (
   <div>
     <div className="flex items-center justify-between">
       <label
@@ -14,7 +15,7 @@ export const PasswordInput = ({ isConfirm }: Props) => (
         {!isConfirm && 'Password'}
         {isConfirm && 'Confirm Password'}
       </label>
-      {!isConfirm && (
+      {isForgot && (
         <div className="text-sm">
           <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
             Forgot password?

@@ -14,7 +14,7 @@ export const SignInForm = () => {
       }}
     >
       <EmailInput />
-      <PasswordInput />
+      <PasswordInput isForgot={true} />
       <RememberCheckbox />
       <SubmitButton />
     </form>
