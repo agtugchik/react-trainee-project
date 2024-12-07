@@ -17,7 +17,8 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
-      "@constants/*": ["./src/constants/*"]
+      "@constants/*": ["./src/constants/*"],
+      "@context/*": ["./src/context/*"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts", "eslint.config.mjs"]

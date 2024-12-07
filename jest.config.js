@@ -10,5 +10,6 @@ module.exports = {
     '^components/(.*)$': '<rootDir>/src/components/$1',
     '^pages/(.*)$': '<rootDir>/src/pages/$1',
     '^constants/(.*)$': '<rootDir>/src/constants/$1',
+    '^context/(.*)$': '<rootDir>/src/context/$1',
   },
 };
