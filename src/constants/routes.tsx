@@ -1,6 +1,7 @@
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import AppPaths from 'constants/app-paths';
+import { SignInForm } from 'components/ui/sign-in-form';
 
 const LazyMainPage = lazy(() => import('pages/main-page'));
 const LazyAuthPage = lazy(() => import('pages/auth-page'));
@@ -20,6 +21,7 @@ const routes = [
   {
     path: AppPaths.AUTH,
     element: <LazyAuthPage />,
+    children: [{ path: AppPaths.AUTH, element: <SignInForm /> }],
   },
   {
     path: AppPaths.IMAGE,

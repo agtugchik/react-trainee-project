@@ -1,9 +1,6 @@
 import React from 'react';
-import { EmailInput } from 'components/ui/email-input';
-import { PasswordInput } from 'components/ui/password-input';
-import { RememberCheckbox } from 'components/ui/remember-checkbox';
-import { SubmitButton } from 'components/ui/submit-button';
 import { NoAccaunt } from 'components/ui/no-accaunt';
+import { Outlet } from 'react-router-dom';
 
 export const AuthPage = () => {
   return (
@@ -15,20 +12,7 @@ export const AuthPage = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form
-          className="space-y-6"
-          onChange={(e) => console.log(e)}
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <EmailInput />
-          <PasswordInput />
-          <PasswordInput isConfirm={true} />
-          <RememberCheckbox />
-          <SubmitButton />
-        </form>
-
+        <Outlet />
         <NoAccaunt />
       </div>
     </div>
