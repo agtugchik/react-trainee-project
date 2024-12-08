@@ -1,13 +1,12 @@
 import AppPaths from 'constants/app-paths';
-import { AppContext } from 'context';
-import React, { Suspense, useContext } from 'react';
+import { useAuth } from 'context';
+import React, { Suspense } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 export const Page = () => {
-  const { isAuth } = useContext(AppContext);
+  const { isAuth } = useAuth();
   const location = useLocation();
   const pathname = location.pathname;
-  console.log(isAuth);
 
   return (
     <Suspense fallback="loading...">

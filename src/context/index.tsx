@@ -1,19 +1,25 @@
-import React, { Context, createContext, ReactNode, useState } from 'react';
+// import React, { Context, createContext, ReactNode, useState } from 'react';
 
-const initAppState = { isAuth: localStorage.getItem('isAuth') === 'true' };
+// const initAppState = { isAuth: localStorage.getItem('isAuth') === 'true' };
 
-export const AppContext = createContext<typeof initAppState | null>(null) as Context<
-  typeof initAppState
->;
+// export const AppContext = createContext<typeof initAppState | null>(null) as Context<
+//   typeof initAppState
+// >;
 
-type Props = {
-  children: ReactNode;
-};
+// type Props = {
+//   children: ReactNode;
+// };
 
-const Context = ({ children }: Props) => {
-  const [appState] = useState(initAppState);
+// const Context = ({ children }: Props) => {
+//   const [appState, setAppState] = useState(initAppState);
 
-  return <AppContext.Provider value={appState}>{children}</AppContext.Provider>;
-};
+//   const setIsAuth = () => {
+//     setAppState({ ...appState });
+//   };
 
-export default Context;
+//   return <AppContext.Provider value={appState}>{children}</AppContext.Provider>;
+// };
+
+// export default Context;
+
+export { AuthProvider, useAuth } from './auth-context';
