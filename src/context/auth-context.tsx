@@ -1,15 +1,8 @@
-import React, {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
+import React, { createContext, ReactNode, useContext, useState } from 'react';
 
 type AuthContextType = {
   isAuth: boolean;
-  setIsAuth: Dispatch<SetStateAction<boolean>>;
+  handleAuth: (isRemember: boolean) => void;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -21,7 +14,14 @@ type Props = {
 const AuthProvider = ({ children }: Props) => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth') === 'true');
 
-  const initAuthStateValue = { isAuth, setIsAuth };
+  const handleAuth = (isRemember: boolean) => {
+    setIsAuth(!isAuth);
+    if (isRemember) {
+      localStorage.setItem('isAuth', 'true');
+    }
+  };
+
+  const initAuthStateValue = { isAuth, handleAuth };
 
   return <AuthContext.Provider value={initAuthStateValue}>{children}</AuthContext.Provider>;
 };
