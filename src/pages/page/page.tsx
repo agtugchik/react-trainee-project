@@ -11,8 +11,13 @@ export const Page = () => {
 
   return (
     <Suspense fallback="loading...">
-      {isAuth ? <Outlet /> : <Navigate to={AppPaths.AUTH} />}
-      {!isAuth && pathname === AppPaths.SIGNUP && <Navigate to={AppPaths.SIGNUP} />}
+      {isAuth && pathname !== AppPaths.AUTH && pathname !== AppPaths.SIGNUP ? (
+        <Outlet />
+      ) : pathname === AppPaths.SIGNUP ? (
+        <Navigate to={AppPaths.SIGNUP} />
+      ) : (
+        <Navigate to={AppPaths.AUTH} />
+      )}
     </Suspense>
   );
 };
