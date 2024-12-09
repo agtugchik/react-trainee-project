@@ -8,6 +8,7 @@ import Users from 'constants/db';
 import { useAuth } from 'context';
 import { useNavigate } from 'react-router-dom';
 import AppPaths from 'constants/app-paths';
+import { GoogleAuthButton } from '../google-auth-button';
 
 interface IForm {
   email: string;
@@ -47,6 +48,7 @@ export const SignInForm = () => {
       <PasswordInput isForgot={true} form={form} />
       <RememberCheckbox form={form} />
       <SubmitButton form={form} />
+      <GoogleAuthButton />
     </form>
   );
 };
