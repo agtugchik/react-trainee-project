@@ -54,6 +54,7 @@ module.exports = {
       constants: path.resolve(__dirname, 'src/constants'),
       context: path.resolve(__dirname, 'src/context'),
       assets: path.resolve(__dirname, 'src/assets'),
+      types: path.resolve(__dirname, 'src/types'),
     },
   },
   plugins: [

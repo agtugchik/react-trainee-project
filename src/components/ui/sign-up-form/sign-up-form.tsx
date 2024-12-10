@@ -6,16 +6,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import Users from 'constants/db';
 import AppPaths from 'constants/app-paths';
 import { useNavigate } from 'react-router-dom';
-
-interface IForm {
-  email: string;
-  password: string;
-  confirm_password: string;
-}
+import { SignUpFormType } from 'types/sign-in-up-form';
 
 export const SignUpForm = () => {
   const navigate = useNavigate();
-  const form = useForm<IForm>({
+  const form = useForm<SignUpFormType>({
     defaultValues: {
       email: '',
       password: '',
@@ -26,7 +21,7 @@ export const SignUpForm = () => {
 
   const { handleSubmit } = form;
 
-  const submit: SubmitHandler<IForm> = (data) => {
+  const submit: SubmitHandler<SignUpFormType> = (data) => {
     const newUser: (typeof Users)[number] = {
       id: String(Users.length),
       firstName: '',
