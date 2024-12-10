@@ -1,6 +1,7 @@
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import { InputValidationError } from '../input-validation-error';
+import { isValidPass } from 'constants/reg-exp';
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,8 +17,7 @@ export const PasswordInput = ({ isConfirm, isForgot, form }: Props) => {
     formState: { errors },
   } = form;
 
-  const validatePassword = () =>
-    isConfirm ? undefined : /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,15}$/;
+  const validatePassword = () => (isConfirm ? undefined : isValidPass);
 
   const validateConfirmPassword = () =>
     isConfirm ? () => getValues('password') === getValues('confirm_password') : undefined;
