@@ -10,7 +10,7 @@ export const App = () => {
 
   return (
     <AuthProvider>
-      <GoogleOAuthProvider clientId="676793723203-lg4jrd095rr52hivu8s2losdr70kudmo.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={process.env.CLIENT_ID || ''}>
         {appRoutes}
         <Page />
       </GoogleOAuthProvider>
