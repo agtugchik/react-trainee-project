@@ -29,8 +29,7 @@ export const PasswordInput = ({ isConfirm, isForgot, form }: Props) => {
           htmlFor={isConfirm ? 'confirm_password' : 'password'}
           className="block text-sm/6 font-medium text-gray-900"
         >
-          {!isConfirm && 'Password'}
-          {isConfirm && 'Confirm Password'}
+          {!isConfirm ? 'Password' : 'Confirm Password'}
         </label>
         {isForgot && (
           <div className="text-sm">
