@@ -2,6 +2,7 @@ import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import { InputValidationError } from '../input-validation-error';
 import { isEmail } from 'constants/reg-exp';
+import { FormFieldsNames } from 'constants/form-fields-names';
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,13 +17,13 @@ export const EmailInput = ({ form }: Props) => {
 
   return (
     <div>
-      <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+      <label htmlFor={FormFieldsNames.EMAIL} className="block text-sm/6 font-medium text-gray-900">
         Email address
       </label>
       <div className="mt-2">
         <input
-          id="email"
-          {...register('email', {
+          id={FormFieldsNames.EMAIL}
+          {...register(FormFieldsNames.EMAIL, {
             required: true,
             pattern: isEmail,
           })}
@@ -30,7 +31,7 @@ export const EmailInput = ({ form }: Props) => {
           autoComplete="email"
           className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
         />
-        {errors?.email && <InputValidationError inputType="email" />}
+        {errors?.email && <InputValidationError inputType={FormFieldsNames.EMAIL} />}
       </div>
     </div>
   );

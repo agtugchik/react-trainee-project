@@ -1,9 +1,10 @@
 import React from 'react';
 import ErrorIcon from 'assets/icons/error.svg';
+import { FormFieldsNames } from 'constants/form-fields-names';
 
-type Props = {
-  inputType: 'email' | 'password' | 'confirm_password';
-};
+interface Props {
+  inputType: FormFieldsNames;
+}
 
 const errors: { [key: string]: string } = {
   email: 'You have to pass correct email adress',

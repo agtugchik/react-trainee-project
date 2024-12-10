@@ -1,3 +1,4 @@
+import { FormFieldsNames } from 'constants/form-fields-names';
 import React, { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
@@ -14,8 +15,8 @@ export const RememberCheckbox = ({ form }: Props) => {
     <div className="flex items-start mb-6">
       <div className="flex items-center h-5">
         <input
-          id="remember"
-          {...register('remember')}
+          id={FormFieldsNames.REMEMBER}
+          {...register(FormFieldsNames.REMEMBER)}
           type="checkbox"
           value=""
           checked={checked}
@@ -26,7 +27,7 @@ export const RememberCheckbox = ({ form }: Props) => {
         />
       </div>
       <label
-        htmlFor="remember"
+        htmlFor={FormFieldsNames.REMEMBER}
         className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
       >
         Remember me
