@@ -53,6 +53,7 @@ module.exports = {
       pages: path.resolve(__dirname, 'src/pages'),
       constants: path.resolve(__dirname, 'src/constants'),
       context: path.resolve(__dirname, 'src/context'),
+      assets: path.resolve(__dirname, 'src/assets'),
     },
   },
   plugins: [

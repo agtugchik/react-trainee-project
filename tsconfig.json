@@ -18,8 +18,9 @@
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
       "@constants/*": ["./src/constants/*"],
-      "@context/*": ["./src/context/*"]
+      "@context/*": ["./src/context/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["./src/**/*", "styled.d.ts", "eslint.config.mjs"]
+  "include": ["./src/**/*", "custom.d.ts", "eslint.config.mjs"]
 }
