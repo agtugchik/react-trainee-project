@@ -3,10 +3,10 @@ import AppPaths from 'constants/app-paths';
 import { useLocation } from 'react-router-dom';
 import { UseFormReturn } from 'react-hook-form';
 
-type Props = {
+interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: UseFormReturn<any, any, any>;
-};
+}
 
 export const SubmitButton = ({ form }: Props) => {
   const location = useLocation();

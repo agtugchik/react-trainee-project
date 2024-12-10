@@ -4,12 +4,12 @@ import { InputValidationError } from '../input-validation-error';
 import { isValidPass } from 'constants/reg-exp';
 import { FormFieldsNames } from 'constants/form-fields-names';
 
-type Props = {
+interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: UseFormReturn<any, any, any>;
   isConfirm?: boolean;
   isForgot?: boolean;
-};
+}
 
 export const PasswordInput = ({ isConfirm, isForgot, form }: Props) => {
   const {

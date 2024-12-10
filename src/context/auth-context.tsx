@@ -7,9 +7,9 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 const AuthProvider = ({ children }: Props) => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth') === 'true');
