@@ -1,6 +1,7 @@
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import { InputValidationError } from '../input-validation-error';
+import { isEmail } from 'constants/reg-exp';
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,8 +24,7 @@ export const EmailInput = ({ form }: Props) => {
           id="email"
           {...register('email', {
             required: true,
-            pattern:
-              /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            pattern: isEmail,
           })}
           type="email"
           autoComplete="email"
