@@ -12,23 +12,13 @@ export const SubmitButton = ({ form }: Props) => {
   const location = useLocation();
   const pathname = location.pathname;
   const {
-    getValues,
     formState: { isDirty, isValid },
   } = form;
-
-  const initButtonDisabled = () => {
-    const formValues = getValues();
-    let isDisabled = true;
-    for (const key in formValues) {
-      if (typeof key === 'string' && formValues[key].length) isDisabled = false;
-    }
-    return isDisabled;
-  };
 
   return (
     <div>
       <button
-        disabled={(isDirty && !isValid) || initButtonDisabled()}
+        disabled={isDirty && !isValid}
         type="submit"
         className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
       >
