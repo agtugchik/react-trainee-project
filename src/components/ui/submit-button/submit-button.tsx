@@ -1,14 +1,9 @@
 import React from 'react';
 import AppPaths from 'constants/app-paths';
 import { useLocation } from 'react-router-dom';
-import { UseFormReturn } from 'react-hook-form';
+import { BaseInputProps } from 'types/form-input-button';
 
-interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  form: UseFormReturn<any, any, any>;
-}
-
-export const SubmitButton = ({ form }: Props) => {
+export const SubmitButton = ({ form }: BaseInputProps) => {
   const location = useLocation();
   const pathname = location.pathname;
   const {
