@@ -14,7 +14,6 @@ const errors: { [key: string]: string } = {
 
 export const InputValidationError = ({ inputType }: Props) => (
   <p className="text-xs text-red-500 flex items-center mt-2">
-    <img src={ErrorIcon} alt="error" />
-    {errors[inputType]}
+    <ErrorIcon /> {errors[inputType]}
   </p>
 );
