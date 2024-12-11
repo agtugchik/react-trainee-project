@@ -37,7 +37,7 @@ export const SignUpForm = () => {
     <form className="space-y-6" onSubmit={handleSubmit(submit)}>
       <EmailInput form={form} />
       <PasswordInput form={form} />
-      <PasswordInput isConfirm={true} form={form} />
+      <PasswordInput isConfirm form={form} />
       <SubmitButton form={form} />
     </form>
   );

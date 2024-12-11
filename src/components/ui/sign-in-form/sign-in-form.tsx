@@ -40,7 +40,7 @@ export const SignInForm = () => {
   return (
     <form className="space-y-6" onSubmit={handleSubmit(submit)}>
       <EmailInput form={form} />
-      <PasswordInput isForgot={true} form={form} />
+      <PasswordInput isForgot form={form} />
       <RememberCheckbox form={form} />
       <SubmitButton form={form} />
       <GoogleAuthButton />
