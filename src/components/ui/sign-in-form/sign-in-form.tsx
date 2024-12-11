@@ -9,12 +9,12 @@ import { useAuth } from 'context';
 import { useNavigate } from 'react-router-dom';
 import AppPaths from 'constants/app-paths';
 import { GoogleAuthButton } from '../google-auth-button';
-import { SignInFormType } from 'types/sign-in-up-form';
+import { BaseForm } from 'types/sign-in-up-form';
 
 export const SignInForm = () => {
   const navigate = useNavigate();
   const { isAuth, handleAuth } = useAuth();
-  const form = useForm<SignInFormType>({
+  const form = useForm<BaseForm>({
     defaultValues: {
       email: '',
       password: '',
@@ -24,11 +24,11 @@ export const SignInForm = () => {
   });
   const { handleSubmit } = form;
 
-  const submit: SubmitHandler<SignInFormType> = (data) => {
+  const submit: SubmitHandler<BaseForm> = (data) => {
     const isCorrectUser =
       Users.find((user) => user.email === data.email)?.password === data.password;
     if (isCorrectUser) {
-      handleAuth(data.remember);
+      handleAuth(data.remember as boolean);
     }
   };
 

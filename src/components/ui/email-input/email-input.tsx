@@ -1,15 +1,10 @@
 import React from 'react';
-import { UseFormReturn } from 'react-hook-form';
 import { InputValidationError } from '../input-validation-error';
 import { isEmail } from 'constants/reg-exp';
 import { FormFieldsNames } from 'constants/form-fields-names';
+import { BaseInputProps } from 'types/form-input-button';
 
-interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  form: UseFormReturn<any, any, any>;
-}
-
-export const EmailInput = ({ form }: Props) => {
+export const EmailInput = ({ form }: BaseInputProps) => {
   const {
     register,
     formState: { errors },

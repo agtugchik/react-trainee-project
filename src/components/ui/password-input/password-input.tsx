@@ -1,17 +1,10 @@
 import React from 'react';
-import { UseFormReturn } from 'react-hook-form';
 import { InputValidationError } from '../input-validation-error';
 import { isValidPass } from 'constants/reg-exp';
 import { FormFieldsNames } from 'constants/form-fields-names';
+import { PasswordInputProps } from 'types/form-input-button';
 
-interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  form: UseFormReturn<any, any, any>;
-  isConfirm?: boolean;
-  isForgot?: boolean;
-}
-
-export const PasswordInput = ({ isConfirm, isForgot, form }: Props) => {
+export const PasswordInput = ({ isConfirm, isForgot, form }: PasswordInputProps) => {
   const {
     register,
     getValues,

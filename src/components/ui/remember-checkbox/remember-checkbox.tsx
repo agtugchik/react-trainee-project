@@ -1,13 +1,8 @@
 import { FormFieldsNames } from 'constants/form-fields-names';
 import React from 'react';
-import { UseFormReturn } from 'react-hook-form';
+import { BaseInputProps } from 'types/form-input-button';
 
-interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  form: UseFormReturn<any, any, any>;
-}
-
-export const RememberCheckbox = ({ form }: Props) => {
+export const RememberCheckbox = ({ form }: BaseInputProps) => {
   const { register } = form;
 
   return (
