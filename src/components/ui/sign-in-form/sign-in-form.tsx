@@ -34,7 +34,6 @@ export const SignInForm = () => {
 
   useEffect(() => {
     if (isAuth) navigate(AppPaths.MAIN);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth]);
 
   return (

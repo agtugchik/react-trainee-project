@@ -64,7 +64,7 @@ export default [
 
     rules: {
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/exhaustive-deps': 'off',
       'comma-dangle': ['error', 'only-multiline'],
       'react/prop-types': 'off',
       'react/display-name': 'off',
