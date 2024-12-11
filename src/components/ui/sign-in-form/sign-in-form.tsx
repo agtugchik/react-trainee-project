@@ -34,7 +34,7 @@ export const SignInForm = () => {
 
   useEffect(() => {
     if (isAuth) navigate(AppPaths.MAIN);
-  }, [isAuth]);
+  }, [isAuth, navigate]);
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit(submit)}>
