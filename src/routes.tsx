@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import AppPaths from 'constants/app-paths';
 import AuthPage from 'pages/auth-page';
 import { Page } from 'pages/page';
+import { Navigate } from 'react-router-dom';
 
 const LazyMainPage = lazy(() => import('pages/main-page'));
 const LazyImagePage = lazy(() => import('pages/image-page'));
@@ -16,6 +17,7 @@ const routes = [
     children: [
       {
         path: AppPaths.ROOT,
+        element: <Navigate to={AppPaths.AUTH} />,
       },
       {
         path: AppPaths.MAIN,
