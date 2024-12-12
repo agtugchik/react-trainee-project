@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
-import { AuthProvider } from 'context';
+import { AuthProvider } from 'context/';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export const App = () => {

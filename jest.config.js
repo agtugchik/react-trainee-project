@@ -7,6 +7,7 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   moduleNameMapper: {
+    '\\.svg$': '<rootDir>/src/mocks/svg.js',
     '^components/(.*)$': '<rootDir>/src/components/$1',
     '^pages/(.*)$': '<rootDir>/src/pages/$1',
     '^constants/(.*)$': '<rootDir>/src/constants/$1',
