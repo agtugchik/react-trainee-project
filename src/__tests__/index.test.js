@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, cleanup, waitFor, fireEvent } from '@testing-library/react';
+import { render, cleanup, waitFor, fireEvent, screen } from '@testing-library/react';
 import { App } from '../app';
 import { BrowserRouter } from 'react-router-dom';
+
+const { getByRole, getByText, getByLabelText } = screen;
 
 const signInTitle = 'Sign in to your account';
 const signInButtonTitle = /^Sign in$/i;
@@ -25,30 +27,28 @@ const confirmInputError = 'Must match with password';
 const mainPageTitle = 'MainPage';
 
 describe('App component', () => {
-  afterAll(cleanup);
-  it('Google button should be in the document', async () => {
-    const { getByRole } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+  beforeEach(async () => {
+    await waitFor(() =>
+      render(
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      )
     );
+  });
 
+  afterEach(cleanup);
+
+  it('Google button should be in the document', async () => {
     await waitFor(() => {
       expect(getByRole('google')).toBeInTheDocument();
     });
   });
 
   it('Should work redirect', async () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
-
     await waitFor(() => {
       expect(getByText(toSignUpTitle)).toBeInTheDocument();
     });
-
     const toSignUpButton = getByText(toSignUpTitle).closest('span');
     fireEvent.click(toSignUpButton);
     await waitFor(() => {
@@ -64,12 +64,6 @@ describe('App component', () => {
   });
 
   it('Should work input validation', async () => {
-    const { getByText, getByLabelText } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
-
     await waitFor(() => {
       expect(getByText(signInTitle)).toBeInTheDocument();
     });
@@ -95,12 +89,6 @@ describe('App component', () => {
   });
 
   it('Auth flow should work correct', async () => {
-    const { getByText, getByLabelText } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
-
     await waitFor(() => {
       expect(getByText(signInTitle)).toBeInTheDocument();
     });
