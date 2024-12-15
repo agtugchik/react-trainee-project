@@ -3,6 +3,26 @@ import { render, cleanup, waitFor, fireEvent } from '@testing-library/react';
 import { App } from '../app';
 import { BrowserRouter } from 'react-router-dom';
 
+const signInTitle = 'Sign in to your account';
+const signInButtonTitle = /^Sign in$/i;
+const signUpTitle = 'Sign up your account';
+const signUpButtonTitle = /^Sign up$/i;
+const toSignUpTitle = /^Create now$/i;
+const emailInputLabel = /^Email address$/i;
+const passwordInputLabel = /^Password$/i;
+const confirmInputLabel = /^Confirm Password$/i;
+const emailInputName = 'email';
+const passwordInputName = 'password';
+const confirmInputName = 'confirm_password';
+const notValidEmail = 'agtugchik13@gmail';
+const notValidPassword = '1Artu';
+const validEmail = 'agtugchik13@gmail.com';
+const validPassword = '1Artur';
+const emailInputError = 'You have to pass correct email adress';
+const passwordInputError = 'At least one big, one small letter and one nember, 6-15 symbols';
+const confirmInputError = 'Must match with password';
+const mainPageTitle = 'MainPage';
+
 describe('App component', () => {
   afterAll(cleanup);
 
@@ -14,70 +34,64 @@ describe('App component', () => {
     );
 
     await waitFor(() => {
-      expect(getByText(/Sign in to your account/i)).toBeInTheDocument();
+      expect(getByText(signInTitle)).toBeInTheDocument();
     });
-
-    const signInButton = getByText(/^Sign in$/i).closest('button');
-    const createAccountButton = getByText(/^Create now$/i).closest('span');
-
+    let signInButton = getByText(signInButtonTitle).closest('button');
+    const createAccountButton = getByText(toSignUpTitle).closest('span');
     expect(signInButton).toHaveAttribute('disabled');
+
     fireEvent.click(createAccountButton);
-
     await waitFor(() => {
-      expect(getByText(/Sign up your account/i)).toBeInTheDocument();
+      expect(getByText(signUpTitle)).toBeInTheDocument();
     });
 
-    const email = getByLabelText(/^Email address$/i, { selector: 'input' });
-    const password = getByLabelText(/^Password$/i, { selector: 'input' });
-    const confirm = getByLabelText(/^Confirm Password$/i, { selector: 'input' });
-    const signUpButton = getByText(/^Sign up$/i).closest('button');
-
+    let emailInput = getByLabelText(emailInputLabel);
+    let passwordInput = getByLabelText(passwordInputLabel);
+    const confirmInput = getByLabelText(confirmInputLabel);
+    const signUpButton = getByText(signUpButtonTitle).closest('button');
     expect(signUpButton).toHaveAttribute('disabled');
+    expect(emailInput.getAttribute('name')).toBe(emailInputName);
+    expect(passwordInput.getAttribute('name')).toBe(passwordInputName);
+    expect(confirmInput.getAttribute('name')).toBe(confirmInputName);
 
-    expect(email.getAttribute('name')).toBe('email');
-    expect(password.getAttribute('name')).toBe('password');
-    expect(confirm.getAttribute('name')).toBe('confirm_password');
-
-    fireEvent.change(email, { target: { value: 'agtugchik13@gmail' } });
-    fireEvent.change(password, { target: { value: '1Artu' } });
-    fireEvent.change(confirm, { target: { value: '1Artur' } });
+    fireEvent.change(emailInput, { target: { value: notValidEmail } });
+    fireEvent.change(passwordInput, { target: { value: notValidPassword } });
+    fireEvent.change(confirmInput, { target: { value: validPassword } });
     await waitFor(() => {
-      expect(getByText(/You have to pass correct email adress/i)).toBeInTheDocument();
-      expect(
-        getByText(/At least one big, one small letter and one nember, 6-15 symbols/i)
-      ).toBeInTheDocument();
-      expect(getByText(/Must match with password/i)).toBeInTheDocument();
+      expect(getByText(emailInputError)).toBeInTheDocument();
+      expect(getByText(passwordInputError)).toBeInTheDocument();
+      expect(getByText(confirmInputError)).toBeInTheDocument();
     });
 
-    fireEvent.change(email, { target: { value: 'agtugchik13@gmail.com' } });
-    fireEvent.change(password, { target: { value: '1Artur' } });
-    fireEvent.change(confirm, { target: { value: '1Artur' } });
+    fireEvent.change(emailInput, { target: { value: validEmail } });
+    fireEvent.change(passwordInput, { target: { value: validPassword } });
+    fireEvent.change(confirmInput, { target: { value: validPassword } });
     await waitFor(() => {
-      expect(email.value).toMatch('agtugchik13@gmail.com');
-      expect(password.value).toMatch('1Artur');
-      expect(confirm.value).toMatch('1Artur');
+      expect(emailInput.value).toMatch(validEmail);
+      expect(passwordInput.value).toMatch(validPassword);
+      expect(confirmInput.value).toMatch(validPassword);
       expect(signUpButton).not.toHaveAttribute('disabled');
     });
+
     fireEvent.click(signUpButton);
     await waitFor(() => {
-      expect(getByText(/Sign in to your account/i)).toBeInTheDocument();
+      expect(getByText(signInTitle)).toBeInTheDocument();
     });
 
-    const emailLogIn = getByLabelText(/^Email address$/i, { selector: 'input' });
-    const passwordLogIn = getByLabelText(/^Password$/i, { selector: 'input' });
-    const newSignInButton = getByText(/^Sign in$/i).closest('button');
-
-    fireEvent.change(emailLogIn, { target: { value: 'agtugchik13@gmail.com' } });
-    fireEvent.change(passwordLogIn, { target: { value: '1Artur' } });
+    emailInput = getByLabelText(emailInputLabel);
+    passwordInput = getByLabelText(passwordInputLabel);
+    signInButton = getByText(signInButtonTitle).closest('button');
+    fireEvent.change(emailInput, { target: { value: validEmail } });
+    fireEvent.change(passwordInput, { target: { value: validPassword } });
     await waitFor(() => {
-      expect(emailLogIn.value).toMatch('agtugchik13@gmail.com');
-      expect(passwordLogIn.value).toMatch('1Artur');
-      expect(newSignInButton).not.toHaveAttribute('disabled');
+      expect(emailInput.value).toMatch(validEmail);
+      expect(passwordInput.value).toMatch(validPassword);
+      expect(signInButton).not.toHaveAttribute('disabled');
     });
 
-    fireEvent.click(newSignInButton);
+    fireEvent.click(signInButton);
     await waitFor(() => {
-      expect(getByText(/MainPage/i)).toBeInTheDocument();
+      expect(getByText(mainPageTitle)).toBeInTheDocument();
     });
   });
 });
