@@ -5,7 +5,7 @@ import { useAuth } from 'context/';
 export const GoogleAuthButton = () => {
   const { handleAuth } = useAuth();
   return (
-    <div className="w-full flex justify-center">
+    <div role="google" className="w-full flex justify-center">
       <GoogleLogin
         onSuccess={() => {
           handleAuth(false);

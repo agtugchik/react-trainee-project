@@ -8,6 +8,7 @@ const signInButtonTitle = /^Sign in$/i;
 const signUpTitle = 'Sign up your account';
 const signUpButtonTitle = /^Sign up$/i;
 const toSignUpTitle = /^Create now$/i;
+const toSignInTitle = /^Log In$/i;
 const emailInputLabel = /^Email address$/i;
 const passwordInputLabel = /^Password$/i;
 const confirmInputLabel = /^Confirm Password$/i;
@@ -25,8 +26,75 @@ const mainPageTitle = 'MainPage';
 
 describe('App component', () => {
   afterAll(cleanup);
+  it('Google button should be in the document', async () => {
+    const { getByRole } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
 
-  it('Auth flow', async () => {
+    await waitFor(() => {
+      expect(getByRole('google')).toBeInTheDocument();
+    });
+  });
+
+  it('Should work redirect', async () => {
+    const { getByText } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
+    await waitFor(() => {
+      expect(getByText(toSignUpTitle)).toBeInTheDocument();
+    });
+
+    const toSignUpButton = getByText(toSignUpTitle).closest('span');
+    fireEvent.click(toSignUpButton);
+    await waitFor(() => {
+      expect(getByText(signUpTitle)).toBeInTheDocument();
+    });
+
+    const toSignInButton = getByText(toSignInTitle).closest('span');
+
+    fireEvent.click(toSignInButton);
+    await waitFor(() => {
+      expect(getByText(signInTitle)).toBeInTheDocument();
+    });
+  });
+
+  it('Should work input validation', async () => {
+    const { getByText, getByLabelText } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
+    await waitFor(() => {
+      expect(getByText(signInTitle)).toBeInTheDocument();
+    });
+
+    const signInButton = getByText(signInButtonTitle).closest('button');
+    const emailInput = getByLabelText(emailInputLabel);
+    const passwordInput = getByLabelText(passwordInputLabel);
+    fireEvent.change(emailInput, { target: { value: notValidEmail } });
+    fireEvent.change(passwordInput, { target: { value: notValidPassword } });
+    await waitFor(() => {
+      expect(getByText(emailInputError)).toBeInTheDocument();
+      expect(getByText(passwordInputError)).toBeInTheDocument();
+      expect(signInButton).toHaveAttribute('disabled');
+    });
+
+    fireEvent.change(emailInput, { target: { value: validEmail } });
+    fireEvent.change(passwordInput, { target: { value: validPassword } });
+    await waitFor(() => {
+      expect(emailInput.value).toMatch(validEmail);
+      expect(passwordInput.value).toMatch(validPassword);
+      expect(signInButton).not.toHaveAttribute('disabled');
+    });
+  });
+
+  it('Auth flow should work correct', async () => {
     const { getByText, getByLabelText } = render(
       <BrowserRouter>
         <App />
@@ -37,10 +105,10 @@ describe('App component', () => {
       expect(getByText(signInTitle)).toBeInTheDocument();
     });
     let signInButton = getByText(signInButtonTitle).closest('button');
-    const createAccountButton = getByText(toSignUpTitle).closest('span');
+    const toSignUpButton = getByText(toSignUpTitle).closest('span');
     expect(signInButton).toHaveAttribute('disabled');
 
-    fireEvent.click(createAccountButton);
+    fireEvent.click(toSignUpButton);
     await waitFor(() => {
       expect(getByText(signUpTitle)).toBeInTheDocument();
     });
