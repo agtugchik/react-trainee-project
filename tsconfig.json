@@ -17,8 +17,11 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
-      "@constants/*": ["./src/constants/*"]
+      "@constants/*": ["./src/constants/*"],
+      "@context/*": ["./src/context/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@types/*": ["./src/types/*"]
     }
   },
-  "include": ["./src/**/*", "styled.d.ts", "eslint.config.mjs"]
+  "include": ["./src/**/*", "custom.d.ts", "eslint.config.mjs"]
 }

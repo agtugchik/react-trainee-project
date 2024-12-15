@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -36,7 +37,12 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+        issuer: /\.[jt]sx?$/,
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
       {
@@ -51,9 +57,13 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components'),
       pages: path.resolve(__dirname, 'src/pages'),
       constants: path.resolve(__dirname, 'src/constants'),
+      context: path.resolve(__dirname, 'src/context'),
+      assets: path.resolve(__dirname, 'src/assets'),
+      types: path.resolve(__dirname, 'src/types'),
     },
   },
   plugins: [
+    new Dotenv(),
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
       title: 'react-trainee-project',
