@@ -14,7 +14,7 @@ const { getByLabelText, getByText } = screen;
 const notValidPassword = '123';
 const validPassword = '1Artur';
 
-describe('EmailInput component', () => {
+describe('PasswordInput component', () => {
   afterEach(cleanup);
   const TestInput = ({ isConfirm, isForgot }: { isConfirm?: boolean; isForgot?: boolean }) => {
     const form = useForm<BaseForm>({

@@ -5,7 +5,7 @@ import { FormFieldsNames } from 'constants/form-fields-names';
 
 const { getByText } = screen;
 
-describe('EmailInput component', () => {
+describe('InputValidationError component', () => {
   afterEach(cleanup);
 
   it('should throw email error', () => {
