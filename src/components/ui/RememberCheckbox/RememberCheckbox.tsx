@@ -2,6 +2,8 @@ import { FormFieldsNames } from 'constants/form-fields-names';
 import React from 'react';
 import { BaseInputProps } from 'types/form-input-button';
 
+export const rememberLabel = 'Remember me';
+
 export const RememberCheckbox = ({ form }: BaseInputProps) => {
   const { register } = form;
 
@@ -20,7 +22,7 @@ export const RememberCheckbox = ({ form }: BaseInputProps) => {
         htmlFor={FormFieldsNames.REMEMBER}
         className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
       >
-        Remember me
+        {rememberLabel}
       </label>
     </div>
   );

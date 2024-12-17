@@ -1,1 +1,1 @@
-export { RememberCheckbox } from './RememberCheckbox';
+export { RememberCheckbox, rememberLabel } from './RememberCheckbox';
