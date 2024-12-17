@@ -6,7 +6,7 @@ interface Props {
   inputType: FormFieldsNames;
 }
 
-const errors: { [key: string]: string } = {
+export const errors: { [key: string]: string } = {
   email: 'You have to pass correct email adress',
   password: 'At least one big, one small letter and one nember, 6-15 symbols',
   confirm_password: 'Must match with password',

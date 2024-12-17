@@ -4,6 +4,8 @@ import { isEmail } from 'constants/reg-exp';
 import { FormFieldsNames } from 'constants/form-fields-names';
 import { BaseInputProps } from 'types/form-input-button';
 
+export const emailInputLabelText = 'Email address';
+
 export const EmailInput = ({ form }: BaseInputProps) => {
   const {
     register,
@@ -13,7 +15,7 @@ export const EmailInput = ({ form }: BaseInputProps) => {
   return (
     <div>
       <label htmlFor={FormFieldsNames.EMAIL} className="block text-sm/6 font-medium text-gray-900">
-        Email address
+        {emailInputLabelText}
       </label>
       <div className="mt-2">
         <input
