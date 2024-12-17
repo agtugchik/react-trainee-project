@@ -1,1 +1,7 @@
-export { AccountCondition } from './AccountCondition';
+export {
+  AccountCondition,
+  authText,
+  authLinkText,
+  signUpText,
+  signUpLinkText,
+} from './AccountCondition';
