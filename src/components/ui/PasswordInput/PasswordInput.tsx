@@ -4,6 +4,10 @@ import { isValidPass } from 'constants/reg-exp';
 import { FormFieldsNames } from 'constants/form-fields-names';
 import { PasswordInputProps } from 'types/form-input-button';
 
+export const passwordInputLabel = 'Password';
+export const passwordConfirmInputLabel = 'Confirm Password';
+export const forgotText = 'Forgot password?';
+
 export const PasswordInput = ({ isConfirm, isForgot, form }: PasswordInputProps) => {
   const {
     register,
@@ -25,12 +29,12 @@ export const PasswordInput = ({ isConfirm, isForgot, form }: PasswordInputProps)
           htmlFor={isConfirm ? FormFieldsNames.CONFIRM_PASSWORD : FormFieldsNames.PASSWORD}
           className="block text-sm/6 font-medium text-gray-900"
         >
-          {!isConfirm ? 'Password' : 'Confirm Password'}
+          {!isConfirm ? passwordInputLabel : passwordConfirmInputLabel}
         </label>
         {isForgot && (
           <div className="text-sm">
             <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-              Forgot password?
+              {forgotText}
             </a>
           </div>
         )}

@@ -1,1 +1,6 @@
-export { PasswordInput } from './PasswordInput';
+export {
+  PasswordInput,
+  passwordInputLabel,
+  passwordConfirmInputLabel,
+  forgotText,
+} from './PasswordInput';
