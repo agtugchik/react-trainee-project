@@ -1,5 +1,7 @@
 import React from 'react';
 
+export const pageTitle = 'ImagePage';
+
 export const ImagePage = () => {
-  return <div>ImagePage</div>;
+  return <div>{pageTitle}</div>;
 };
