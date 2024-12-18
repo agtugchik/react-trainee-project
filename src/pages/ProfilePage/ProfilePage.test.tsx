@@ -4,7 +4,7 @@ import { ProfilePage, pageTitle } from './ProfilePage';
 
 const { getByText } = screen;
 
-describe('MainPage component', () => {
+describe('ProfilePage component', () => {
   beforeEach(() => {
     render(<ProfilePage />);
   });
