@@ -3,8 +3,8 @@ import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { useForm } from 'react-hook-form';
 import { BaseForm } from '../../../types/sign-in-up-form';
 import { signInText, signUpText, SubmitButton } from './SubmitButton';
-import { MemoryRouter } from 'react-router-dom';
 import AppPaths from 'constants/app-paths';
+import PathRouter from 'helpers/PathRouter';
 
 const { getByText } = screen;
 
@@ -24,9 +24,9 @@ describe('SubmitButton component', () => {
 
   it('/auth route render', () => {
     render(
-      <MemoryRouter initialEntries={[AppPaths.AUTH]} initialIndex={0}>
+      <PathRouter path={AppPaths.AUTH}>
         <TestButton />
-      </MemoryRouter>
+      </PathRouter>
     );
 
     waitFor(() => {
@@ -39,9 +39,9 @@ describe('SubmitButton component', () => {
 
   it('/auth/sign-up route render', () => {
     render(
-      <MemoryRouter initialEntries={[AppPaths.SIGNUP]} initialIndex={0}>
+      <PathRouter path={AppPaths.SIGNUP}>
         <TestButton />
-      </MemoryRouter>
+      </PathRouter>
     );
 
     waitFor(() => {

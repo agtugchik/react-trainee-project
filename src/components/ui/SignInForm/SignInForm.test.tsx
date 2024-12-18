@@ -1,6 +1,5 @@
 import React from 'react';
 import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import { SignInForm } from './SignInForm';
 import { AuthProvider } from 'context/';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -10,6 +9,7 @@ import { passwordInputLabel } from '../PasswordInput';
 import { errors } from '../InputValidationError/InputValidationError';
 import AppPaths from 'constants/app-paths';
 import { rememberLabel } from '../RememberCheckbox';
+import PathRouter from 'helpers/PathRouter';
 
 const { getByRole, getByText, getByLabelText } = screen;
 const notValidEmail = '123';
@@ -20,13 +20,13 @@ const validPassword = '1Artur';
 describe('SignInForm component', () => {
   beforeEach(() => {
     render(
-      <MemoryRouter initialEntries={[AppPaths.AUTH]} initialIndex={0}>
+      <PathRouter path={AppPaths.AUTH}>
         <AuthProvider>
           <GoogleOAuthProvider clientId="">
             <SignInForm />
           </GoogleOAuthProvider>
         </AuthProvider>
-      </MemoryRouter>
+      </PathRouter>
     );
   });
   afterEach(cleanup);

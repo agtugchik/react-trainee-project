@@ -21,7 +21,8 @@
       "@constants/*": ["./src/constants/*"],
       "@context/*": ["./src/context/*"],
       "@assets/*": ["./src/assets/*"],
-      "@types/*": ["./src/types/*"]
+      "@types/*": ["./src/types/*"],
+      "@helpers/*": ["./src/helpers/*"]
     }
   },
   "include": ["./src/**/*", "custom.d.ts", "eslint.config.mjs"]

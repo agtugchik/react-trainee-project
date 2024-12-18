@@ -14,5 +14,6 @@ module.exports = {
     '^context/(.*)$': '<rootDir>/src/context/$1',
     '^assets/(.*)$': '<rootDir>/src/assets/$1',
     '^types/(.*)$': '<rootDir>/src/types/$1',
+    '^helpers/(.*)$': '<rootDir>/src/helpers/$1',
   },
 };

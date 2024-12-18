@@ -8,7 +8,7 @@ import {
   signUpLinkText,
   signUpText,
 } from './AccountCondition';
-import { MemoryRouter } from 'react-router-dom';
+import PathRouter from 'helpers/PathRouter';
 
 const { getByText } = screen;
 
@@ -17,9 +17,9 @@ describe('AccountCondition component', () => {
 
   it('/auth route render', () => {
     render(
-      <MemoryRouter initialEntries={[AppPaths.AUTH]} initialIndex={0}>
+      <PathRouter path={AppPaths.AUTH}>
         <AccountCondition />
-      </MemoryRouter>
+      </PathRouter>
     );
 
     expect(getByText(authText.trim())).toBeInTheDocument();
@@ -28,9 +28,9 @@ describe('AccountCondition component', () => {
 
   it('/auth/sign-up route render', () => {
     render(
-      <MemoryRouter initialEntries={[AppPaths.SIGNUP]} initialIndex={0}>
+      <PathRouter path={AppPaths.SIGNUP}>
         <AccountCondition />
-      </MemoryRouter>
+      </PathRouter>
     );
 
     expect(getByText(signUpText.trim())).toBeInTheDocument();
@@ -39,9 +39,9 @@ describe('AccountCondition component', () => {
 
   it('should work redirect', () => {
     render(
-      <MemoryRouter initialEntries={[AppPaths.AUTH]} initialIndex={0}>
+      <PathRouter path={AppPaths.AUTH}>
         <AccountCondition />
-      </MemoryRouter>
+      </PathRouter>
     );
 
     expect(getByText(authText.trim())).toBeInTheDocument();
