@@ -1,5 +1,7 @@
 import React from 'react';
 
+export const pageTitle = 'MainPage';
+
 export const MainPage = () => {
-  return <div>MainPage</div>;
+  return <div>{pageTitle}</div>;
 };
