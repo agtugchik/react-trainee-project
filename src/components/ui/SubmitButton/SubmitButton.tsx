@@ -3,6 +3,9 @@ import AppPaths from 'constants/app-paths';
 import { useLocation } from 'react-router-dom';
 import { BaseInputProps } from 'types/form-input-button';
 
+export const signInText = 'Sign in';
+export const signUpText = 'Sign up';
+
 export const SubmitButton = ({ form }: BaseInputProps) => {
   const location = useLocation();
   const pathname = location.pathname;
@@ -24,8 +27,8 @@ export const SubmitButton = ({ form }: BaseInputProps) => {
         type="submit"
         className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {pathname === AppPaths.AUTH && 'Sign in'}
-        {pathname === AppPaths.SIGNUP && 'Sign up'}
+        {pathname === AppPaths.AUTH && signInText}
+        {pathname === AppPaths.SIGNUP && signUpText}
       </button>
     </div>
   );
