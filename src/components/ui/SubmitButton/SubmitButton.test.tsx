@@ -1,8 +1,8 @@
 import React from 'react';
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { useForm } from 'react-hook-form';
-import { BaseForm } from '../../../types/sign-in-up-form';
-import { signInText, signUpText, SubmitButton } from './SubmitButton';
+import { BaseForm } from 'types/sign-in-up-form';
+import { signInText, signUpText, SubmitButton } from 'components/ui/SubmitButton';
 import AppPaths from 'constants/app-paths';
 import PathRouter from 'helpers/PathRouter';
 

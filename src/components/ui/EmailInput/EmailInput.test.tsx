@@ -2,8 +2,8 @@ import React from 'react';
 import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { EmailInput, emailInputLabelText } from './EmailInput';
 import { useForm } from 'react-hook-form';
-import { BaseForm } from '../../../types/sign-in-up-form';
-import { errors } from '../InputValidationError/InputValidationError';
+import { BaseForm } from 'types/sign-in-up-form';
+import { errors } from 'components/ui/InputValidationError/InputValidationError';
 
 const { getByLabelText, getByText } = screen;
 const notValidEmail = '123';

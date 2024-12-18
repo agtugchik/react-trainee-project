@@ -1,8 +1,8 @@
 import React from 'react';
 import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 import { useForm } from 'react-hook-form';
-import { BaseForm } from '../../../types/sign-in-up-form';
-import { RememberCheckbox, rememberLabel } from './RememberCheckbox';
+import { BaseForm } from 'types/sign-in-up-form';
+import { RememberCheckbox, rememberLabel } from 'components/ui/RememberCheckbox';
 
 const { getByLabelText, getByText } = screen;
 

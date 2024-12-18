@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import { AuthPage, signInPageTitle, signUpPageTitle } from './AuthPage';
+import { AuthPage, signInPageTitle, signUpPageTitle } from 'pages/AuthPage';
 
 import AppPaths from 'constants/app-paths';
 import PathRouter from 'helpers/PathRouter';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import { GoogleAuthButton } from './GoogleAuthButton';
+import { GoogleAuthButton } from 'components/ui/GoogleAuthButton';
 import { AuthProvider } from 'context/';
 
 const { getByRole } = screen;

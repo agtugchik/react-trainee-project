@@ -1,4 +1,4 @@
 import { AuthPage } from './AuthPage';
-export { signInPageTitle, signUpPageTitle } from './AuthPage';
+export { AuthPage, signInPageTitle, signUpPageTitle } from './AuthPage';
 
 export default AuthPage;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import { errors, InputValidationError } from '../InputValidationError/InputValidationError';
+import {
+  errors,
+  InputValidationError,
+} from 'components/ui/InputValidationError/InputValidationError';
 import { FormFieldsNames } from 'constants/form-fields-names';
 
 const { getByText } = screen;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import { MainPage, pageTitle } from './MainPage';
+import { MainPage, pageTitle } from 'pages/MainPage';
 
 const { getByText } = screen;
 

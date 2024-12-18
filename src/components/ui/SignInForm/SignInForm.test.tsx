@@ -1,13 +1,13 @@
 import React from 'react';
 import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { SignInForm } from './SignInForm';
+import { SignInForm } from 'components/ui/SignInForm';
 import { AuthProvider } from 'context/';
-import { signInText as signInButtonTitle } from '../SubmitButton';
-import { emailInputLabelText } from '../EmailInput';
-import { passwordInputLabel } from '../PasswordInput';
-import { errors } from '../InputValidationError/InputValidationError';
+import { signInText as signInButtonTitle } from 'components/ui/SubmitButton';
+import { emailInputLabelText } from 'components/ui/EmailInput';
+import { passwordInputLabel } from 'components/ui/PasswordInput';
+import { errors } from 'components/ui/InputValidationError/InputValidationError';
 import AppPaths from 'constants/app-paths';
-import { rememberLabel } from '../RememberCheckbox';
+import { rememberLabel } from 'components/ui/RememberCheckbox';
 import PathRouter from 'helpers/PathRouter';
 
 const { getByRole, getByText, getByLabelText } = screen;

@@ -7,7 +7,7 @@ import {
   authText,
   signUpLinkText,
   signUpText,
-} from './AccountCondition';
+} from 'components/ui/AccountCondition';
 import PathRouter from 'helpers/PathRouter';
 
 const { getByText } = screen;
