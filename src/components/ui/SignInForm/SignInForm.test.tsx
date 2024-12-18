@@ -9,6 +9,7 @@ import { emailInputLabelText } from '../EmailInput';
 import { passwordInputLabel } from '../PasswordInput';
 import { errors } from '../InputValidationError/InputValidationError';
 import AppPaths from 'constants/app-paths';
+import { rememberLabel } from '../RememberCheckbox';
 
 const { getByRole, getByText, getByLabelText } = screen;
 const notValidEmail = '123';
@@ -53,5 +54,11 @@ describe('SignInForm component', () => {
       expect(passwordInput.value).toMatch(validPassword);
       expect(signInButton).not.toHaveAttribute('disabled');
     });
+  });
+
+  it('Checkbox should be in the document', () => {
+    const checkboxInputNode = getByLabelText(rememberLabel);
+    expect(checkboxInputNode).toBeInTheDocument();
+    expect(checkboxInputNode).toHaveAttribute('type', 'checkbox');
   });
 });
