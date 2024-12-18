@@ -1,5 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { useForm } from 'react-hook-form';
 import { BaseForm } from 'types/sign-in-up-form';
 import { RememberCheckbox, rememberLabel } from 'components/ui/RememberCheckbox';
@@ -33,7 +34,9 @@ describe('RememberCheckbox component', () => {
 
   it('should be checked', () => {
     const rememberInputNode = getByLabelText(rememberLabel).closest('input');
-    fireEvent.click(rememberInputNode as Element);
-    expect(rememberInputNode).toBeChecked();
+    userEvent.click(rememberInputNode as Element);
+    waitFor(() => expect(rememberInputNode).toBeChecked());
+    userEvent.click(rememberInputNode as Element);
+    waitFor(() => expect(rememberInputNode).not.toBeChecked());
   });
 });

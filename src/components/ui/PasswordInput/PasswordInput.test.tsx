@@ -1,5 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { useForm } from 'react-hook-form';
 import { BaseForm } from 'types/sign-in-up-form';
 import { errors } from 'components/ui/InputValidationError/InputValidationError';
@@ -32,28 +33,28 @@ describe('PasswordInput component', () => {
   it('should throw password error', () => {
     render(<TestInput />);
     const passwordInputNode = getByLabelText(passwordInputLabel);
-    fireEvent.change(passwordInputNode, { target: { value: notValidPassword } });
+    userEvent.type(passwordInputNode, notValidPassword);
     waitFor(() => expect(getByText(errors.password)).toBeInTheDocument());
   });
 
   it("shouldn't throw password error", () => {
     render(<TestInput />);
     const passwordInputNode = getByLabelText(passwordInputLabel);
-    fireEvent.change(passwordInputNode, { target: { value: validPassword } });
+    userEvent.type(passwordInputNode, validPassword);
     waitFor(() => expect(getByText(errors.password)).not.toBeInTheDocument());
   });
 
   it('should throw confirm password error', () => {
     render(<TestInput isConfirm />);
     const passwordInputNode = getByLabelText(passwordConfirmInputLabel);
-    fireEvent.change(passwordInputNode, { target: { value: notValidPassword } });
+    userEvent.type(passwordInputNode, notValidPassword);
     waitFor(() => expect(getByText(errors.confirm_password)).toBeInTheDocument());
   });
 
   it("shouldn't throw confirm password error", () => {
     render(<TestInput isConfirm />);
     const passwordInputNode = getByLabelText(passwordConfirmInputLabel);
-    fireEvent.change(passwordInputNode, { target: { value: validPassword } });
+    userEvent.type(passwordInputNode, validPassword);
     waitFor(() => expect(getByText(errors.confirm_password)).not.toBeInTheDocument());
   });
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { SignInForm } from 'components/ui/SignInForm';
 import { AuthProvider } from 'context/';
 import { signInText as signInButtonTitle } from 'components/ui/SubmitButton';
@@ -36,16 +37,16 @@ describe('SignInForm component', () => {
     const signInButton = getByText(signInButtonTitle).closest('button');
     const emailInput = getByLabelText(emailInputLabelText) as HTMLInputElement;
     const passwordInput = getByLabelText(passwordInputLabel) as HTMLInputElement;
-    fireEvent.change(emailInput, { target: { value: notValidEmail } });
-    fireEvent.change(passwordInput, { target: { value: notValidPassword } });
+    userEvent.type(emailInput, notValidEmail);
+    userEvent.type(passwordInput, notValidPassword);
     waitFor(() => {
       expect(getByText(errors.email)).toBeInTheDocument();
       expect(getByText(errors.password)).toBeInTheDocument();
       expect(signInButton).toHaveAttribute('disabled');
     });
 
-    fireEvent.change(emailInput, { target: { value: validEmail } });
-    fireEvent.change(passwordInput, { target: { value: validPassword } });
+    userEvent.type(emailInput, validEmail);
+    userEvent.type(passwordInput, validPassword);
     waitFor(() => {
       expect(emailInput.value).toMatch(validEmail);
       expect(passwordInput.value).toMatch(validPassword);
@@ -53,9 +54,13 @@ describe('SignInForm component', () => {
     });
   });
 
-  it('Checkbox should be in the document', () => {
+  it('Checkbox should work correct', () => {
     const checkboxInputNode = getByLabelText(rememberLabel);
     expect(checkboxInputNode).toBeInTheDocument();
     expect(checkboxInputNode).toHaveAttribute('type', 'checkbox');
+    userEvent.click(checkboxInputNode as Element);
+    waitFor(() => expect(checkboxInputNode).toBeChecked());
+    userEvent.click(checkboxInputNode as Element);
+    waitFor(() => expect(checkboxInputNode).not.toBeChecked());
   });
 });

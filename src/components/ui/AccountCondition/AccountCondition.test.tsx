@@ -1,5 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import AppPaths from 'constants/app-paths';
 import {
   AccountCondition,
@@ -37,7 +38,7 @@ describe('AccountCondition component', () => {
     expect(getByText(signUpLinkText)).toBeInTheDocument();
   });
 
-  it('should work redirect', () => {
+  it('should work redirect', async () => {
     render(
       <PathRouter path={AppPaths.AUTH}>
         <AccountCondition />
@@ -48,13 +49,18 @@ describe('AccountCondition component', () => {
     const authLinkNode = getByText(authLinkText).closest('span');
     expect(authLinkNode).toBeInTheDocument();
 
-    fireEvent.click(authLinkNode as Element);
-    expect(getByText(signUpText.trim())).toBeInTheDocument();
+    userEvent.click(authLinkNode as Element);
+
+    await waitFor(() => {
+      expect(getByText(signUpText.trim())).toBeInTheDocument();
+    });
     const signUpLinkNode = getByText(signUpLinkText);
     expect(signUpLinkNode).toBeInTheDocument();
 
-    fireEvent.click(signUpLinkNode as Element);
-    expect(getByText(authText.trim())).toBeInTheDocument();
-    expect(getByText(authLinkText)).toBeInTheDocument();
+    userEvent.click(signUpLinkNode as Element);
+    waitFor(() => {
+      expect(getByText(authText.trim())).toBeInTheDocument();
+      expect(getByText(authLinkText)).toBeInTheDocument();
+    });
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { EmailInput, emailInputLabelText } from './EmailInput';
 import { useForm } from 'react-hook-form';
 import { BaseForm } from 'types/sign-in-up-form';
@@ -29,13 +30,13 @@ describe('EmailInput component', () => {
 
   it('should throw error', () => {
     const emailInputNode = getByLabelText(emailInputLabelText);
-    fireEvent.change(emailInputNode, { target: { value: notValidEmail } });
+    userEvent.type(emailInputNode, notValidEmail);
     waitFor(() => expect(getByText(errors.email)).toBeInTheDocument());
   });
 
   it("shouldn't throw error", () => {
     const emailInputNode = getByLabelText(emailInputLabelText);
-    fireEvent.change(emailInputNode, { target: { value: validEmail } });
+    userEvent.type(emailInputNode, validEmail);
     waitFor(() => expect(getByText(errors.email)).not.toBeInTheDocument());
   });
 });

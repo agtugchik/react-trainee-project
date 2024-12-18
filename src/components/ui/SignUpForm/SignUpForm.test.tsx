@@ -1,5 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { AuthProvider } from 'context/';
 import { signUpText as signUpButtonTitle } from 'components/ui/SubmitButton';
 import { emailInputLabelText } from 'components/ui/EmailInput';
@@ -32,9 +33,9 @@ describe('SignUpForm component', () => {
     const emailInput = getByLabelText(emailInputLabelText) as HTMLInputElement;
     const passwordInput = getByLabelText(passwordInputLabel) as HTMLInputElement;
     const passwordConfirmInput = getByLabelText(passwordConfirmInputLabel) as HTMLInputElement;
-    fireEvent.change(emailInput, { target: { value: notValidEmail } });
-    fireEvent.change(passwordInput, { target: { value: notValidPassword } });
-    fireEvent.change(passwordConfirmInput, { target: { value: validPassword } });
+    userEvent.type(emailInput, notValidEmail);
+    userEvent.type(passwordInput, notValidPassword);
+    userEvent.type(passwordConfirmInput, validPassword);
     waitFor(() => {
       expect(getByText(errors.email)).toBeInTheDocument();
       expect(getByText(errors.password)).toBeInTheDocument();
@@ -42,9 +43,9 @@ describe('SignUpForm component', () => {
       expect(signInButton).toHaveAttribute('disabled');
     });
 
-    fireEvent.change(emailInput, { target: { value: validEmail } });
-    fireEvent.change(passwordInput, { target: { value: validPassword } });
-    fireEvent.change(passwordConfirmInput, { target: { value: validPassword } });
+    userEvent.type(emailInput, validEmail);
+    userEvent.type(passwordInput, validPassword);
+    userEvent.type(passwordConfirmInput, validPassword);
     waitFor(() => {
       expect(getByText(errors.email)).not.toBeInTheDocument();
       expect(getByText(errors.password)).not.toBeInTheDocument();
