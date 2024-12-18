@@ -1,0 +1,16 @@
+import React from 'react';
+import { cleanup, render, screen } from '@testing-library/react';
+import { ProfilePage, pageTitle } from './ProfilePage';
+
+const { getByText } = screen;
+
+describe('MainPage component', () => {
+  beforeEach(() => {
+    render(<ProfilePage />);
+  });
+  afterEach(cleanup);
+
+  it('Should be valid title', () => {
+    expect(getByText(pageTitle)).toBeInTheDocument();
+  });
+});
