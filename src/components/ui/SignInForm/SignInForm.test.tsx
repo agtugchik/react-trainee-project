@@ -2,7 +2,6 @@ import React from 'react';
 import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { SignInForm } from './SignInForm';
 import { AuthProvider } from 'context/';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { signInText as signInButtonTitle } from '../SubmitButton';
 import { emailInputLabelText } from '../EmailInput';
 import { passwordInputLabel } from '../PasswordInput';
@@ -22,9 +21,7 @@ describe('SignInForm component', () => {
     render(
       <PathRouter path={AppPaths.AUTH}>
         <AuthProvider>
-          <GoogleOAuthProvider clientId="">
-            <SignInForm />
-          </GoogleOAuthProvider>
+          <SignInForm />
         </AuthProvider>
       </PathRouter>
     );

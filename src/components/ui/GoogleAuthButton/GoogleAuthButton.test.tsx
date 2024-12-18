@@ -1,7 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { GoogleAuthButton } from './GoogleAuthButton';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from 'context/';
 
 const { getByRole, debug } = screen;
@@ -11,11 +10,9 @@ describe('GoogleAuthButton component', () => {
 
   it('should throw error', () => {
     render(
-      <GoogleOAuthProvider clientId="">
-        <AuthProvider>
-          <GoogleAuthButton />
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <GoogleAuthButton />
+      </AuthProvider>
     );
 
     const googleAuthButtonContainer = getByRole('google');
