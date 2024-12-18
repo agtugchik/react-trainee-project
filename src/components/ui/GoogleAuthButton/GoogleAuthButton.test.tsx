@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import { GoogleAuthButton } from './GoogleAuthButton';
 import { AuthProvider } from 'context/';
 
-const { getByRole, debug } = screen;
+const { getByRole } = screen;
 
 describe('GoogleAuthButton component', () => {
   afterEach(cleanup);
@@ -20,6 +20,5 @@ describe('GoogleAuthButton component', () => {
     const googleAuthDiv = googleAuthButtonContainer.getElementsByTagName('div')[0];
     expect(googleAuthDiv).toBeInTheDocument();
     expect(googleAuthDiv).toHaveAttribute('style', 'height: 40px;');
-    debug();
   });
 });
