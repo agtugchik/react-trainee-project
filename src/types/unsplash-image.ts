@@ -1,5 +1,6 @@
 export interface Image {
-  id: string;
+  id: number;
+  title: string;
   cover_photo: {
     urls: {
       raw: string;

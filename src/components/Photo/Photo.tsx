@@ -10,7 +10,7 @@ export const Photo = ({ photo }: Props) => (
     <img
       className="object-cover object-center w-full h-80 max-w-full rounded-lg"
       src={photo.cover_photo.urls.small}
-      alt="photo"
+      alt={photo.title}
     />
   </div>
 );
