@@ -5,7 +5,7 @@ import { useAuth } from 'context/';
 export const GoogleAuthButton = () => {
   const { handleAuth } = useAuth();
   return (
-    <GoogleOAuthProvider clientId={process.env.CLIENT_ID || ''}>
+    <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID || ''}>
       <div role="google" className="w-full flex justify-center">
         <GoogleLogin
           onSuccess={() => {
