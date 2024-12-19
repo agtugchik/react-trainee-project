@@ -11,17 +11,11 @@ const { getByText } = screen;
 describe('InputValidationError component', () => {
   afterEach(cleanup);
 
-  it('should throw email error', () => {
+  it('should throw correct error', () => {
     render(<InputValidationError inputType={FormFieldsNames.EMAIL} />);
     expect(getByText(errors.email)).toBeInTheDocument();
-  });
-
-  it('should throw password error', () => {
     render(<InputValidationError inputType={FormFieldsNames.PASSWORD} />);
     expect(getByText(errors.password)).toBeInTheDocument();
-  });
-
-  it('should throw confirm password error', () => {
     render(<InputValidationError inputType={FormFieldsNames.CONFIRM_PASSWORD} />);
     expect(getByText(errors.confirm_password)).toBeInTheDocument();
   });
