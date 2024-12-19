@@ -1,3 +1,5 @@
+import { QueryFunction } from '@tanstack/react-query';
+
 const baseUrl = 'https://api.unsplash.com';
 
 interface Image {
@@ -13,9 +15,9 @@ interface Image {
   };
 }
 
-export const getPhotos = async (count = 0): Promise<Image[]> => {
+export const getPhotos: QueryFunction<Image[], string[], number> = async ({ pageParam }) => {
   const response = await fetch(
-    `${baseUrl}/collections?client_id=${process.env.UNSPLASH_ACCESS_KEY}&page=${count}&per_page=12`
+    `${baseUrl}/collections?client_id=${process.env.UNSPLASH_ACCESS_KEY}&page=${pageParam}&per_page=12`
   );
   return response.json();
 };
