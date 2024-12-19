@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getRandomPhotos } from 'api/unsplash-api';
+import { getPhotos } from 'api/unsplash-api';
 
 export const pageTitle = 'MainPage';
 
 export const MainPage = () => {
-  const query = useQuery({ queryKey: ['photos'], queryFn: () => getRandomPhotos(9) });
+  const query = useQuery({ queryKey: ['photos'], queryFn: () => getPhotos() });
 
   useEffect(() => console.log(query.data), [query]);
   return (
@@ -14,7 +14,7 @@ export const MainPage = () => {
         <div key={photo.id}>
           <img
             className="object-cover object-center w-full h-80 max-w-full rounded-lg"
-            src={photo.urls.small}
+            src={photo.cover_photo.urls.small}
             alt="gallery-photo"
           />
         </div>
