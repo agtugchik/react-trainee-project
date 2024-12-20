@@ -10,6 +10,7 @@ describe('Photo component', () => {
   const mockedPhoto = {
     id: 1,
     title: 'someTitle',
+    isLiked: true,
     cover_photo: {
       urls: {
         raw: 'somePhoto',

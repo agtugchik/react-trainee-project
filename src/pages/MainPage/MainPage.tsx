@@ -11,6 +11,19 @@ export const MainPage = () => {
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: ['photos'],
     queryFn: getPhotos,
+    select: (photo) => {
+      const photoWithLike = photo.pages.map((page) =>
+        page.map((photo) => ({
+          ...photo,
+          isLiked: localStorage.getItem(String(photo.id)) === 'true',
+        }))
+      );
+
+      return {
+        pages: photoWithLike,
+        pageParams: photo.pageParams,
+      };
+    },
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (lastPage.length === 0) return;

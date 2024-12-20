@@ -1,16 +1,18 @@
+import { LikeButton } from 'components/ui/LikeButton';
 import React from 'react';
-import { Image } from 'types/unsplash-image';
+import { LikedImage } from 'types/unsplash-image';
 
 interface Props {
-  photo: Image;
+  photo: LikedImage;
 }
 
 export const Photo = ({ photo }: Props) => (
-  <div>
+  <div className="relative">
     <img
       className="object-cover object-center w-full h-80 max-w-full rounded-lg"
       src={photo.cover_photo.urls.small}
       alt={photo.title}
     />
+    <LikeButton photo={photo} />
   </div>
 );

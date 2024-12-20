@@ -11,3 +11,7 @@ export interface Image {
     };
   };
 }
+
+export interface LikedImage extends Image {
+  isLiked: boolean;
+}
