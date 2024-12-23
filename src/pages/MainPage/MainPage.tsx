@@ -13,7 +13,7 @@ export const MainPage = () => {
     queryFn: getPhotos,
     select: (photo) => {
       const photoWithLike = photo.pages.map((page) =>
-        page.map((photo) => ({
+        page.results.map((photo) => ({
           ...photo,
           isLiked: localStorage.getItem(String(photo.id)) === 'true',
         }))
@@ -26,7 +26,7 @@ export const MainPage = () => {
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      if (lastPage.length === 0) return;
+      if (lastPage.results.length === 0) return;
       return lastPageParam + 1;
     },
     refetchOnWindowFocus: false,

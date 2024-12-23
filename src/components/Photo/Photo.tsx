@@ -10,7 +10,7 @@ export const Photo = ({ photo }: Props) => (
   <div className="relative">
     <img
       className="object-cover object-center w-full h-80 max-w-full rounded-lg"
-      src={photo.cover_photo.urls.small}
+      src={photo.urls.small}
       alt={photo.title}
     />
     <LikeButton photo={photo} />

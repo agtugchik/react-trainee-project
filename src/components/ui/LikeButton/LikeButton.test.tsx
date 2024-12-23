@@ -7,14 +7,12 @@ const mockedPhoto = {
   id: 1,
   title: 'someTitle',
   isLiked: true,
-  cover_photo: {
-    urls: {
-      raw: 'somePhoto',
-      full: 'somePhoto',
-      regular: 'somePhoto',
-      small: 'somePhoto',
-      thumb: 'somePhoto',
-    },
+  urls: {
+    raw: 'somePhoto',
+    full: 'somePhoto',
+    regular: 'somePhoto',
+    small: 'somePhoto',
+    thumb: 'somePhoto',
   },
 };
 

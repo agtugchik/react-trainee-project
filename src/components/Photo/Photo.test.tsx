@@ -11,14 +11,12 @@ describe('Photo component', () => {
     id: 1,
     title: 'someTitle',
     isLiked: true,
-    cover_photo: {
-      urls: {
-        raw: 'somePhoto',
-        full: 'somePhoto',
-        regular: 'somePhoto',
-        small: 'somePhoto',
-        thumb: 'somePhoto',
-      },
+    urls: {
+      raw: 'somePhoto',
+      full: 'somePhoto',
+      regular: 'somePhoto',
+      small: 'somePhoto',
+      thumb: 'somePhoto',
     },
   };
 
@@ -26,6 +24,6 @@ describe('Photo component', () => {
     render(<Photo photo={mockedPhoto} />);
     const testImg = getByAltText(mockedPhoto.title);
     expect(testImg).toBeInTheDocument();
-    expect(testImg).toHaveAttribute('src', mockedPhoto.cover_photo.urls.small);
+    expect(testImg).toHaveAttribute('src', mockedPhoto.urls.small);
   });
 });
