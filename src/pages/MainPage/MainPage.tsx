@@ -3,6 +3,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { getPhotos } from 'api/unsplash-api';
 import { useInView } from 'react-intersection-observer';
 import { Photo } from 'components/Photo';
+import { ParamsFilter } from 'components/ui/ParamsFilter';
 
 export const pageTitle = 'MainPage';
 
@@ -38,6 +39,7 @@ export const MainPage = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 overflow-x-hidden">
+      <ParamsFilter />
       {data?.pages.map((page) => page.map((photo) => <Photo key={photo.id} photo={photo} />))}
       {isFetchingNextPage ? <>Loading...</> : hasNextPage && <div ref={ref} />}
     </div>
