@@ -1,20 +1,6 @@
-type OrderByTypes = 'latest' | 'relevant';
-type ContentFilterType = 'low' | 'high';
-type ColorType =
-  | 'black_and_white'
-  | 'black'
-  | 'white'
-  | 'yellow'
-  | 'orange'
-  | 'red'
-  | 'purple'
-  | 'magenta'
-  | 'green'
-  | 'teal'
-  | 'blue';
-type OrientationType = 'landscape' | 'portrait' | 'squarish';
+import { ColorType, ContentFilterType, OrderByType, OrientationType } from 'types/unsplash-types';
 
-const OrderByOptions: { [key: string]: OrderByTypes } = {
+const OrderByOptions: { [key: string]: OrderByType } = {
   Latest: 'latest',
   Relevant: 'relevant',
 };

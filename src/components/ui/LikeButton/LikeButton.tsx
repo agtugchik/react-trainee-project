@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
 import LikeIcon from 'assets/icons/like.svg';
-import { LikedImage } from 'types/unsplash-image';
+import { LikedImage } from 'types/unsplash-types';
 
 interface Props {
   photo: LikedImage;

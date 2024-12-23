@@ -4,13 +4,15 @@ import { getPhotos } from 'api/unsplash-api';
 import { useInView } from 'react-intersection-observer';
 import { Photo } from 'components/Photo';
 import { ParamsFilter } from 'components/ui/ParamsFilter';
+import { useSearchParams } from 'context/';
 
 export const pageTitle = 'MainPage';
 
 export const MainPage = () => {
+  const { paramValues } = useSearchParams();
   const { ref, inView, entry } = useInView();
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['photos'],
+    queryKey: ['photos', paramValues],
     queryFn: getPhotos,
     select: (photo) => {
       const photoWithLike = photo.pages.map((page) =>

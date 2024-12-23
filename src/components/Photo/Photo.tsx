@@ -1,6 +1,6 @@
 import { LikeButton } from 'components/ui/LikeButton';
 import React from 'react';
-import { LikedImage } from 'types/unsplash-image';
+import { LikedImage } from 'types/unsplash-types';
 
 interface Props {
   photo: LikedImage;
