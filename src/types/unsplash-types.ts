@@ -14,6 +14,10 @@ export interface LikedImage extends Image {
   isLiked: boolean;
 }
 
+export interface SearchResponse {
+  results: Image[];
+}
+
 export type OrderByType = 'latest' | 'relevant';
 export type ContentFilterType = 'low' | 'high';
 export type ColorType =

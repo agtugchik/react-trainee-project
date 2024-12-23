@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { Photo } from 'components/Photo';
 import { ParamsFilter } from 'components/ui/ParamsFilter';
 import { useSearchParams } from 'context/';
+import { Image, SearchResponse } from 'types/unsplash-types';
 
 export const pageTitle = 'MainPage';
 
@@ -16,7 +17,7 @@ export const MainPage = () => {
     queryFn: getPhotos,
     select: (photo) => {
       const photoWithLike = photo.pages.map((page) =>
-        page.results.map((photo) => ({
+        ((page as SearchResponse).results || (page as Image[])).map((photo) => ({
           ...photo,
           isLiked: localStorage.getItem(String(photo.id)) === 'true',
         }))
@@ -29,7 +30,7 @@ export const MainPage = () => {
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      if (lastPage.results.length === 0) return;
+      if (((lastPage as SearchResponse).results || (lastPage as Image[])).length === 0) return;
       return lastPageParam + 1;
     },
     refetchOnWindowFocus: false,
