@@ -5,7 +5,7 @@ import {
   OrderByValues,
   OrientationValues,
 } from 'constants/query-filters';
-import { useSearchParams } from 'context';
+import { useSearchParams } from 'context/';
 import { SearchParamsValues } from 'context/SearchParamsContext';
 
 interface Props {
