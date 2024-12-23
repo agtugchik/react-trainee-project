@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchIcon from 'assets/icons/search.svg';
-import { useSearchParams } from 'context';
+import { useSearchParams } from 'context/';
+
+export const placeholderText = 'Search';
 
 export const SearchInput = () => {
   const { paramValues } = useSearchParams();
@@ -15,7 +17,7 @@ export const SearchInput = () => {
         id="query"
         name="query"
         className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Search"
+        placeholder={placeholderText}
         value={paramValues.query}
       />
     </div>
