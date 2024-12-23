@@ -1,14 +1,14 @@
 import { ColorType, ContentFilterType, OrderByType, OrientationType } from 'types/unsplash-types';
 
-const OrderByOptions: { [key: string]: OrderByType } = {
+const orderByOptions: { [key: string]: OrderByType } = {
   Latest: 'latest',
   Relevant: 'relevant',
 };
-const ContentFilterOptions: { [key: string]: ContentFilterType } = {
+const contentFilterOptions: { [key: string]: ContentFilterType } = {
   Low: 'low',
   High: 'high',
 };
-const ColorOptions: { [key: string]: ColorType } = {
+const colorOptions: { [key: string]: ColorType } = {
   'Black and White': 'black_and_white',
   Black: 'black',
   White: 'white',
@@ -21,29 +21,29 @@ const ColorOptions: { [key: string]: ColorType } = {
   Teal: 'teal',
   Blue: 'blue',
 };
-const OrientaitionOptions: { [key: string]: OrientationType } = {
+const orientaitionOptions: { [key: string]: OrientationType } = {
   Landscape: 'landscape',
   Portrait: 'portrait',
   Squarish: 'squarish',
 };
 
-export const OrderByValues = {
+export const orderByValues = {
   name: 'order_by',
   baseOption: 'Choose order type',
-  options: OrderByOptions,
+  options: orderByOptions,
 };
-export const ContentFilterValues = {
+export const contentFilterValues = {
   name: 'content_filter',
   baseOption: 'Choose content filter',
-  options: ContentFilterOptions,
+  options: contentFilterOptions,
 };
-export const ColorValues = {
+export const colorValues = {
   name: 'color',
   baseOption: 'Choose color',
-  options: ColorOptions,
+  options: colorOptions,
 };
-export const OrientationValues = {
+export const orientationValues = {
   name: 'orientation',
   baseOption: 'Choose orientation',
-  options: OrientaitionOptions,
+  options: orientaitionOptions,
 };

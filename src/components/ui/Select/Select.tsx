@@ -1,19 +1,19 @@
 import React from 'react';
 import {
-  ColorValues,
-  ContentFilterValues,
-  OrderByValues,
-  OrientationValues,
+  colorValues,
+  contentFilterValues,
+  orderByValues,
+  orientationValues,
 } from 'constants/query-filters';
 import { useSearchParams } from 'context/';
 import { SearchParamsValues } from 'context/SearchParamsContext';
 
 interface Props {
   optionValues:
-    | typeof OrderByValues
-    | typeof ContentFilterValues
-    | typeof ColorValues
-    | typeof OrientationValues;
+    | typeof orderByValues
+    | typeof contentFilterValues
+    | typeof colorValues
+    | typeof orientationValues;
 }
 
 export const Select = ({ optionValues }: Props) => {

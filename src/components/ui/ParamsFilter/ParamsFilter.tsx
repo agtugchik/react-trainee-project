@@ -2,10 +2,10 @@ import React from 'react';
 import { SearchInput } from 'components/ui/SearchInput';
 import { Select } from 'components/ui/Select';
 import {
-  ColorValues,
-  ContentFilterValues,
-  OrderByValues,
-  OrientationValues,
+  colorValues,
+  contentFilterValues,
+  orderByValues,
+  orientationValues,
 } from 'constants/query-filters';
 import { useSearchParams } from 'context/';
 
@@ -21,10 +21,10 @@ export const ParamsFilter = () => {
       }}
     >
       <SearchInput />
-      <Select optionValues={OrderByValues} />
-      <Select optionValues={ContentFilterValues} />
-      <Select optionValues={ColorValues} />
-      <Select optionValues={OrientationValues} />
+      <Select optionValues={orderByValues} />
+      <Select optionValues={contentFilterValues} />
+      <Select optionValues={colorValues} />
+      <Select optionValues={orientationValues} />
     </form>
   );
 };
