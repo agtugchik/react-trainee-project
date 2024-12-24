@@ -38,7 +38,6 @@ const SearchParamsProvider = ({ children }: Props) => {
     newValues[name as keyof SearchParamsValues] = value || '';
 
     setParamValues(newValues);
-    console.log(newValues);
   };
 
   const initSearchParamsStateValue = { paramValues, changeParamValues };
