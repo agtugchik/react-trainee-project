@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 const mockedPhoto = {
   id: 1,
-  title: 'someTitle',
+  description: 'someTitle',
   isLiked: true,
   urls: {
     raw: 'somePhoto',

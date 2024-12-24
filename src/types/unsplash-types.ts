@@ -1,6 +1,6 @@
 export interface Image {
   id: number;
-  title: string;
+  description: string;
 
   urls: {
     raw: string;

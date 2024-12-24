@@ -9,7 +9,7 @@ describe('Photo component', () => {
 
   const mockedPhoto = {
     id: 1,
-    title: 'someTitle',
+    description: 'someTitle',
     isLiked: true,
     urls: {
       raw: 'somePhoto',
@@ -22,7 +22,7 @@ describe('Photo component', () => {
 
   it('should render image with wright props', () => {
     render(<Photo photo={mockedPhoto} />);
-    const testImg = getByAltText(mockedPhoto.title);
+    const testImg = getByAltText(mockedPhoto.description);
     expect(testImg).toBeInTheDocument();
     expect(testImg).toHaveAttribute('src', mockedPhoto.urls.small);
   });

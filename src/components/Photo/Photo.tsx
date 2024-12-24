@@ -11,7 +11,7 @@ export const Photo = ({ photo }: Props) => (
     <img
       className="object-cover object-center w-full h-80 max-w-full rounded-lg"
       src={photo.urls.small}
-      alt={photo.title}
+      alt={photo.description}
     />
     <LikeButton photo={photo} />
   </div>
