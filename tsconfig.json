@@ -23,7 +23,8 @@
       "@assets/*": ["./src/assets/*"],
       "@types/*": ["./src/types/*"],
       "@helpers/*": ["./src/helpers/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@__mocks__/*": ["./src/__mocks__/*"]
     }
   },
   "include": ["./src/**/*", "custom.d.ts", "eslint.config.mjs"]

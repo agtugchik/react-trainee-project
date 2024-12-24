@@ -4,55 +4,11 @@ import { MainPage } from 'pages/MainPage';
 import { QueryProvider, SearchParamsProvider } from 'context/';
 import 'intersection-observer';
 import userEvent from '@testing-library/user-event';
-
-const jsonMock = {
-  results: [
-    {
-      id: '1xzSeJRJEDI',
-      description: 'a grassy field with trees in the background',
-      urls: {
-        raw: '',
-        full: '',
-        regular: '',
-        small: '',
-        thumb: '',
-        small_s3: '',
-      },
-    },
-    {
-      id: 'ryQ-GmDsHhE',
-      description: '100 us dollar bill',
-      urls: {
-        raw: '',
-        full: '',
-        regular: '',
-        small: '',
-        thumb: '',
-        small_s3: '',
-      },
-    },
-    {
-      id: 'ucvkbYo7VAw',
-      description: 'time lapse photography of vehicles passing on roads',
-      urls: {
-        raw: '',
-        full: '',
-        regular: '',
-        small: '',
-        thumb: '',
-        small_s3: '',
-      },
-    },
-  ],
-};
+import { fetchMock, unsplashJsonMock } from '__mocks__/api-mocks';
 
 describe('MainPage component', () => {
   beforeAll(() => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(jsonMock),
-      })
-    ) as jest.Mock;
+    fetchMock(unsplashJsonMock);
   });
 
   afterEach(cleanup);

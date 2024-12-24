@@ -1,29 +1,17 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { Photo } from './Photo';
+import { unsplashMockedPhoto } from '__mocks__/api-mocks';
 
 const { getByAltText } = screen;
 
 describe('Photo component', () => {
   afterEach(cleanup);
 
-  const mockedPhoto = {
-    id: 1,
-    description: 'someTitle',
-    isLiked: true,
-    urls: {
-      raw: 'somePhoto',
-      full: 'somePhoto',
-      regular: 'somePhoto',
-      small: 'somePhoto',
-      thumb: 'somePhoto',
-    },
-  };
-
   it('should render image with wright props', () => {
-    render(<Photo photo={mockedPhoto} />);
-    const testImg = getByAltText(mockedPhoto.description);
+    render(<Photo photo={unsplashMockedPhoto} />);
+    const testImg = getByAltText(unsplashMockedPhoto.description);
     expect(testImg).toBeInTheDocument();
-    expect(testImg).toHaveAttribute('src', mockedPhoto.urls.small);
+    expect(testImg).toHaveAttribute('src', unsplashMockedPhoto.urls.small);
   });
 });
