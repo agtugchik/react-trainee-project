@@ -3,7 +3,6 @@ import AppPaths from 'constants/app-paths';
 import AuthPage from 'pages/AuthPage';
 import { Page } from 'pages/Page';
 import { Navigate } from 'react-router-dom';
-import { SearchParamsProvider } from 'context';
 
 const LazyMainPage = lazy(() => import('pages/MainPage'));
 const LazyImagePage = lazy(() => import('pages/ImagePage'));
@@ -22,11 +21,7 @@ const routes = [
       },
       {
         path: AppPaths.MAIN,
-        element: (
-          <SearchParamsProvider>
-            <LazyMainPage />
-          </SearchParamsProvider>
-        ),
+        element: <LazyMainPage />,
       },
       {
         path: AppPaths.AUTH,

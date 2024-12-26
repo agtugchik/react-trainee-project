@@ -1,7 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { placeholderText, SearchInput } from './SearchInput';
-import { SearchParamsProvider } from 'context/';
 import userEvent from '@testing-library/user-event';
 
 const { getByPlaceholderText } = screen;
@@ -11,11 +10,7 @@ describe('SearchInput component', () => {
   afterEach(cleanup);
 
   it('Should change value', () => {
-    render(
-      <SearchParamsProvider>
-        <SearchInput />
-      </SearchParamsProvider>
-    );
+    render(<SearchInput />);
     const searchInput: HTMLInputElement = getByPlaceholderText(placeholderText);
     expect(searchInput).toBeInTheDocument();
     expect(searchInput.value).toEqual('');

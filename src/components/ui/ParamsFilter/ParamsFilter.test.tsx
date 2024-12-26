@@ -1,6 +1,5 @@
 import React from 'react';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
-import { SearchParamsProvider } from 'context/';
 import userEvent from '@testing-library/user-event';
 import { ParamsFilter } from './ParamsFilter';
 import { placeholderText } from 'components/ui/SearchInput';
@@ -10,6 +9,7 @@ import {
   orderByValues,
   orientationValues,
 } from 'constants/query-filters';
+import { QueryProvider } from 'context/';
 
 const {} = screen;
 const searchValue = 'some text';
@@ -19,9 +19,9 @@ describe('ParamsFilter component', () => {
 
   it('Form should work correct', async () => {
     const { container, getByPlaceholderText } = render(
-      <SearchParamsProvider>
+      <QueryProvider>
         <ParamsFilter />
-      </SearchParamsProvider>
+      </QueryProvider>
     );
 
     const searchInput = getByPlaceholderText(placeholderText) as HTMLInputElement;

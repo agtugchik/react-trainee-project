@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render, waitFor } from '@testing-library/react';
 import { MainPage } from 'pages/MainPage';
-import { QueryProvider, SearchParamsProvider } from 'context/';
+import { QueryProvider } from 'context/';
 import 'intersection-observer';
 import userEvent from '@testing-library/user-event';
 import { fetchMock, unsplashJsonMock } from '__mocks__/api-mocks';
@@ -16,9 +16,7 @@ describe('MainPage component', () => {
   it('Api fetching should work', async () => {
     const { container } = render(
       <QueryProvider>
-        <SearchParamsProvider>
-          <MainPage />
-        </SearchParamsProvider>
+        <MainPage />
       </QueryProvider>
     );
 

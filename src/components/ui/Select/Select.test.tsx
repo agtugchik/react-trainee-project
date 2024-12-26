@@ -1,7 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { Select } from './Select';
-import { SearchParamsProvider } from 'context/';
 import userEvent from '@testing-library/user-event';
 import { contentFilterValues } from 'constants/query-filters';
 
@@ -11,11 +10,7 @@ describe('Select component', () => {
   afterEach(cleanup);
 
   it('Should change value', () => {
-    render(
-      <SearchParamsProvider>
-        <Select optionValues={contentFilterValues} />
-      </SearchParamsProvider>
-    );
+    render(<Select optionValues={contentFilterValues} />);
 
     const selectElement = getByRole('combobox');
     expect(selectElement).toBeInTheDocument();

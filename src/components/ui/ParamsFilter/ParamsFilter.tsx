@@ -7,17 +7,18 @@ import {
   orderByValues,
   orientationValues,
 } from 'constants/query-filters';
-import { useSearchParams } from 'context/';
+import { usePhotoFilter } from 'hooks/use-photo-filter';
 
 export const ParamsFilter = () => {
-  const { changeParamValues } = useSearchParams();
+  const changeFilter = usePhotoFilter();
+
   return (
     <form
       className="max-w-md mx-auto"
       onChange={(e) => {
         const name = (e.target as HTMLInputElement).name;
         const value = (e.target as HTMLInputElement).value;
-        changeParamValues(name, value);
+        changeFilter(name, value);
       }}
     >
       <SearchInput />
