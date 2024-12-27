@@ -1,4 +1,5 @@
 import { QueryFunction } from '@tanstack/react-query';
+import { filterQueryParams } from 'helpers/filter-query-params';
 import { Image, SearchResponse } from 'types/unsplash-types';
 
 const baseUrl = 'https://api.unsplash.com';
@@ -8,16 +9,14 @@ export const getPhotos: QueryFunction<
   [string, { [key: string]: string }],
   number
 > = async ({ pageParam, queryKey }) => {
-  const isAnyParamPassed = Boolean(Object.values(queryKey[1]).reduce((a, v) => a + v, ''));
+  const filledQueryParams = filterQueryParams(queryKey[1]);
+  const searchParams = new URLSearchParams(filledQueryParams);
+  const isAnyParamPassed = Boolean(Object.entries(filledQueryParams).length);
+  searchParams.append('client_id', process.env.UNSPLASH_ACCESS_KEY || '');
+  searchParams.append('page', String(pageParam));
+
   const response = await fetch(
-    `${baseUrl}` +
-      `${isAnyParamPassed ? '/search' : ''}/photos` +
-      `?client_id=${process.env.UNSPLASH_ACCESS_KEY}&page=${pageParam}` +
-      `${isAnyParamPassed ? `&query=${queryKey[1].query.replace(/\s+/g, '') || 'null'}` : ''}` +
-      `${queryKey[1].order_by && `&order_by=${queryKey[1].order_by}`}` +
-      `${queryKey[1].content_filter && `&content_filter=${queryKey[1].content_filter}`}` +
-      `${queryKey[1].color && `&color=${queryKey[1].color}`}` +
-      `${queryKey[1].orientation && `&orientation=${queryKey[1].orientation}`}`,
+    `${baseUrl}` + `${isAnyParamPassed ? '/search' : ''}/photos?` + searchParams.toString(),
     {
       headers: {
         'Accept-Version': 'v1',

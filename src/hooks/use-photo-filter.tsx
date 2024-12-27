@@ -18,6 +18,7 @@ export const usePhotoFilter = () => {
   });
 
   const setPhotoFilter = (name: string, value: string) => {
+    localStorage.setItem(name, value);
     queryClient.setQueryData(['photoFilter'], (filter: typeof data) => {
       const newFilter = { ...filter };
       newFilter[name] = value;
