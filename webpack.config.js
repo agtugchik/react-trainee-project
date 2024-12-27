@@ -61,6 +61,9 @@ module.exports = {
       assets: path.resolve(__dirname, 'src/assets'),
       types: path.resolve(__dirname, 'src/types'),
       helpers: path.resolve(__dirname, 'src/helpers'),
+      api: path.resolve(__dirname, 'src/api'),
+      __mocks__: path.resolve(__dirname, 'src/__mocks__'),
+      hooks: path.resolve(__dirname, 'src/hooks'),
     },
   },
   plugins: [

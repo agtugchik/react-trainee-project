@@ -15,5 +15,8 @@ module.exports = {
     '^assets/(.*)$': '<rootDir>/src/assets/$1',
     '^types/(.*)$': '<rootDir>/src/types/$1',
     '^helpers/(.*)$': '<rootDir>/src/helpers/$1',
+    '^api/(.*)$': '<rootDir>/src/api/$1',
+    '^__mocks__/(.*)$': '<rootDir>/src/__mocks__/$1',
+    '^hooks/(.*)$': '<rootDir>/src/hooks/$1',
   },
 };

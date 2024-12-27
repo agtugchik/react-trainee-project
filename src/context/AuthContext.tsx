@@ -1,9 +1,9 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 
-type AuthContextType = {
+interface AuthContextType {
   isAuth: boolean;
   handleAuth: (isRemember: boolean) => void;
-};
+}
 
 const AuthContext = createContext<AuthContextType | null>(null);
 

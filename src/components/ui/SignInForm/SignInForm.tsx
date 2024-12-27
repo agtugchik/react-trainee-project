@@ -3,7 +3,7 @@ import { EmailInput } from 'components/ui/EmailInput';
 import { PasswordInput } from 'components/ui/PasswordInput';
 import { RememberCheckbox } from 'components/ui/RememberCheckbox';
 import { SubmitButton } from 'components/ui/SubmitButton';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import Users from 'constants/db';
 import { useAuth } from 'context/';
 import { useNavigate } from 'react-router-dom';
@@ -24,7 +24,7 @@ export const SignInForm = () => {
   });
   const { handleSubmit } = form;
 
-  const submit: SubmitHandler<BaseForm> = (data) => {
+  const submit = (data: BaseForm) => {
     const isCorrectUser =
       Users.find((user) => user.email === data.email)?.password === data.password;
     if (isCorrectUser) {
