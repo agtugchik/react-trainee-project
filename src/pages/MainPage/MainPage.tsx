@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { Photo } from 'components/Photo';
 import { ParamsFilter } from 'components/ui/ParamsFilter';
 import { Image, LikedImage, SearchResponse } from 'types/unsplash-types';
+import { usePhotoFilter } from 'hooks/use-photo-filter';
 
 export const pageTitle = 'MainPage';
 
@@ -35,9 +36,10 @@ export const MainPage = () => {
     return lastPageParam + 1;
   };
 
+  const { photoFilter } = usePhotoFilter();
   const { ref, inView, entry } = useInView();
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['photos'],
+    queryKey: ['photos', photoFilter],
     queryFn: getPhotos,
     select: transformPhoto,
     initialPageParam: 1,

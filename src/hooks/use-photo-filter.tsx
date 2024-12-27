@@ -1,19 +1,28 @@
-import { useQueryClient } from '@tanstack/react-query';
-import { Image } from 'types/unsplash-types';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { ColorType, ContentFilterType, OrderByType, OrientationType } from 'types/unsplash-types';
 
-type UsePhotoFilterr = () => (name: string, value: string) => void;
-type ChangeFilter = (name: string, value: string) => void;
-
-export const usePhotoFilter: UsePhotoFilterr = () => {
-  const queryClient = useQueryClient();
-  const changeFilter: ChangeFilter = (name, value) => {
-    localStorage.setItem(name, value);
-    queryClient.setQueryData(['photos'], (data: { pageParams: number[]; pages: Image[][] }) => ({
-      pages: data.pages.length ? [data.pages[0]] : [],
-      pageParams: data.pageParams.length ? [data.pageParams[0]] : [],
-    }));
-    queryClient.invalidateQueries({ queryKey: ['photos'] });
+export const usePhotoFilter = () => {
+  const initialData: { [key: string]: string } = {
+    query: localStorage.getItem('query') || '',
+    order_by: (localStorage.getItem('order_by') as OrderByType) || '',
+    content_filter: (localStorage.getItem('content_filter') as ContentFilterType) || '',
+    color: (localStorage.getItem('color') as ColorType) || '',
+    orientation: (localStorage.getItem('orientation') as OrientationType) || '',
   };
 
-  return (name, value) => changeFilter(name, value);
+  const queryClient = useQueryClient();
+  const { data } = useQuery({
+    queryKey: ['photoFilter'],
+    staleTime: Infinity,
+    initialData,
+  });
+
+  const setPhotoFilter = (name: string, value: string) => {
+    queryClient.setQueryData(['photoFilter'], (filter: typeof data) => {
+      const newFilter = { ...filter };
+      newFilter[name] = value;
+      return newFilter;
+    });
+  };
+  return { photoFilter: data, setPhotoFilter };
 };

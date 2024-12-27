@@ -10,7 +10,7 @@ import {
 import { usePhotoFilter } from 'hooks/use-photo-filter';
 
 export const ParamsFilter = () => {
-  const changeFilter = usePhotoFilter();
+  const { setPhotoFilter } = usePhotoFilter();
 
   return (
     <form
@@ -18,7 +18,7 @@ export const ParamsFilter = () => {
       onChange={(e) => {
         const name = (e.target as HTMLInputElement).name;
         const value = (e.target as HTMLInputElement).value;
-        changeFilter(name, value);
+        setPhotoFilter(name, value);
       }}
     >
       <SearchInput />
