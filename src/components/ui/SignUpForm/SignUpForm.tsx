@@ -2,7 +2,7 @@ import React from 'react';
 import { EmailInput } from 'components/ui/EmailInput';
 import { PasswordInput } from 'components/ui/PasswordInput';
 import { SubmitButton } from 'components/ui/SubmitButton';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import Users from 'constants/db';
 import AppPaths from 'constants/app-paths';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const SignUpForm = () => {
 
   const { handleSubmit } = form;
 
-  const submit: SubmitHandler<BaseForm> = (data) => {
+  const submit = (data: BaseForm) => {
     const newUser: (typeof Users)[number] = {
       id: String(Users.length),
       firstName: '',

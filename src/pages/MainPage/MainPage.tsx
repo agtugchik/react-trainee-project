@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
-import { GetNextPageParamFunction, InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
+import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import { getPhotos } from 'api/unsplash-api';
 import { useInView } from 'react-intersection-observer';
 import { Photo } from 'components/Photo';
 import { ParamsFilter } from 'components/ui/ParamsFilter';
-import { Image, LikedImage, SearchResponse } from 'types/unsplash-types';
+import { Image, SearchResponse } from 'types/unsplash-types';
 import { usePhotoFilter } from 'hooks/use-photo-filter';
 
 export const pageTitle = 'MainPage';
 
 export const MainPage = () => {
-  const transformPhoto: (data: InfiniteData<SearchResponse | Image[], number>) => {
-    pages: LikedImage[][];
-    pageParams: number[];
-  } = (photo) => {
+  const transformPhoto = (photo: InfiniteData<SearchResponse | Image[], number>) => {
     const photoWithLike = photo.pages.map((page) =>
       ((page as SearchResponse).results || (page as Image[])).map((photo) => ({
         ...photo,
@@ -27,10 +24,10 @@ export const MainPage = () => {
     };
   };
 
-  const getNextPageParam: GetNextPageParamFunction<number, SearchResponse | Image[]> = (
-    lastPage,
-    allPages,
-    lastPageParam
+  const getNextPageParam = (
+    lastPage: SearchResponse | Image[],
+    allPages: (SearchResponse | Image[])[],
+    lastPageParam: number
   ) => {
     if (((lastPage as SearchResponse).results || (lastPage as Image[])).length === 0) return;
     return lastPageParam + 1;
